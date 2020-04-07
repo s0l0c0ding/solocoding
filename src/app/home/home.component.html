@@ -1,0 +1,40 @@
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <div class="jumbotron my-4 text-dark" style="background-image: url(assets/lead.jpg)">
+        <h1 class="display-4">Yet another blog !</h1>
+        <p class="lead"> Yet another personal blog about programming and software development, but for sure you will
+            find
+            something
+            new,
+            as the developer journey is a continuous discovery and learning.</p>
+        </div>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+        <ng-container *ngFor="let link of links$ | async; let last = last">
+
+            <div class="col-lg-3 col-md-6 mb-4" *ngIf="!last">
+                <div class="card h-100">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">{{link.title}}</h4>
+                        <p class="card-text">{{link.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary" [routerLink]="link.route">Find Out More!</a>
+                    </div>
+                </div>
+            </div>
+
+        </ng-container>
+
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+<!--Photo by Shapelined on Unsplash-->

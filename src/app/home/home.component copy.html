@@ -1,0 +1,48 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+        soloCoding
+    </a>
+</nav>
+
+<div class="container">
+
+    <div class="row-1"></div>
+
+    <div class="row-2">
+        <div class="col-2 hide">.</div>
+        <div class="col-8 justify-content-center">
+            <p>
+                Yet another personal blog about programming and software development, but for sure you will find
+                something
+                new,
+                as the developer journey is a continuous discovery and learning.
+            </p>
+        </div>
+        <div class="col-2 hide">.</div>
+    </div>
+
+    <div class="row row-cols-3 justify-content-center">
+
+        <ng-container *ngFor="let link of links$ | async; let last = last">
+            <div class="card" style="width: 18rem;" *ngIf="!last">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{link.title}}</h5>
+                    <p class="card-text">{{link.description}}</p>
+                    <a href="#" class="btn btn-primary" [routerLink]="link.route">Go {{link.title}}</a>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+<!--
+<p>angular</p>
+<ul>
+    <li *ngFor="let link of links$ | async">
+            <a *ngIf="link.slug === 'angular'" [routerLink]="link.route"> {{link.title}}</a>
+    </li>
+</ul>
+-->
