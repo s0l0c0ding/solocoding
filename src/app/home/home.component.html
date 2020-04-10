@@ -1,4 +1,3 @@
-
 <!-- Page Content -->
 <div class="container">
 
@@ -10,25 +9,26 @@
             something
             new,
             as the developer journey is a continuous discovery and learning.</p>
+    </div>
+
+    <!-- articles Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">read</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <span class="material-icons">
+                    stars
+                </span></div>
+            <div class="divider-custom-line"></div>
         </div>
 
-    <!-- Page Features -->
+    <!-- aeticles -->
     <div class="row text-center">
         <ng-container *ngFor="let link of links$ | async; let last = last">
-
             <div class="col-lg-3 col-md-6 mb-4" *ngIf="!last">
-                <div class="card h-100">
-                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">{{link.title}}</h4>
-                        <p class="card-text">{{link.description}}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-primary" [routerLink]="link.route">Find Out More!</a>
-                    </div>
-                </div>
+                <app-post [link]=link [photo]=link.photo></app-post>
             </div>
-
         </ng-container>
 
 

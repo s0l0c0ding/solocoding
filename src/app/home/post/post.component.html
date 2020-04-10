@@ -1,0 +1,10 @@
+<div class="card h-100">
+    <img class="card-img-top" [src]="photo" alt="photo">
+    <div class="card-body">
+        <h4 class="card-title">{{link.title}}</h4>
+        <p class="card-text">{{link.description}}</p>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-primary" [routerLink]="link.route">Find Out More!</a>
+    </div>
+</div>

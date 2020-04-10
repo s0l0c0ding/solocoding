@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

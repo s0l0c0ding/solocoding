@@ -1,7 +1,61 @@
-<h3>ScullyIo content</h3>
-<hr>
+<!-- Page Content -->
+<div class="container">
 
-<!-- This is where Scully will inject the static HTML -->
-<scully-content></scully-content>
-<hr>
-<h4>End of content</h4>
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+            <!-- Title -->
+            <h1 class="mt-4">{{(post$ | async).title}}</h1>
+
+            <!-- Author -->
+            <p class="lead">
+                by
+                <a href="#">{{(post$ | async).Author}}</a>
+            </p>
+            <hr>
+
+            <!-- Date/Time -->
+            <p>Posted on {{(post$ | async).Date |date}} </p>
+            <hr>
+
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+            <hr>
+            <!-- Post Content -->
+            <!-- This is where Scully will inject the static HTML -->
+            <scully-content></scully-content>
+            <hr>
+
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">Angular</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">Spring</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

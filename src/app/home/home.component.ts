@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ScullyRoutesService, ScullyRoute } from '@scullyio/ng-lib';
-import { Observable, pipe } from 'rxjs';
+import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { Observable} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.links$.subscribe(temp => console.log(temp));
   }
 
 }
