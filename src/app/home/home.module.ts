@@ -11,6 +11,7 @@ import { PostComponent } from './post/post.component';
   imports: [
     CommonModule,
     HomeRoutingModule
-  ]
+  ],
+  exports: [PostComponent]
 })
 export class HomeModule { }
