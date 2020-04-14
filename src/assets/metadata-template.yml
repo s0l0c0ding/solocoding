@@ -1,0 +1,9 @@
+author: Bassem 
+photo: assets/postPhoto.png
+keywords:
+  - angular
+  - spring
+language: en
+output:
+  html_document:
+    css: post-details.component.css
