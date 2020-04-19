@@ -12,10 +12,6 @@ const routes: Routes = [
   {
     path: '**',
     component: BlogComponent,
-  },
-  {
-    path:'posts',
-    component: BlogComponent,
   }
 ];
 

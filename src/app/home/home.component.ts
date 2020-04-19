@@ -11,8 +11,8 @@ export class HomeComponent implements OnInit {
   
   links$ :Observable<any>;
 
-  constructor(private scully: ScullyRoutesService) { 
-    this.links$  = this.scully.available$;
+  constructor(private scully: ScullyRoutesService) {
+    this.links$  = scully.available$;
   }
 
   ngOnInit(): void {
