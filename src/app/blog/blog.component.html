@@ -36,18 +36,25 @@
             <div class="card my-4">
                 <h5 class="card-header">Categories</h5>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="col-sm">
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <button type="button" class="btn btn-outline-danger" [routerLink]="['/posts']"[queryParams]="{ filter: 'angular' }">Angular</button>
+                                    <a class="btn btn-outline-danger" [routerLink]="['/posts']"[queryParams]="{ filter: 'angular' }">Angular</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm">
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <button type="button" class="btn btn-outline-success"  [routerLink]="['/posts']"[queryParams]="{ filter: 'spring' }">Spring</button>
+                                    <a class="btn btn-outline-success"  [routerLink]="['/posts']"[queryParams]="{ filter: 'spring' }">Spring</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
                                 </li>
                             </ul>
                         </div>
