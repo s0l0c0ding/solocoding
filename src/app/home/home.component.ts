@@ -16,7 +16,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.links$.subscribe(temp => console.log(temp));
   }
 
+  currentTag(link: any): boolean {
+    if (link.keywords) {
+      return true;
+    } else {return false}
+  }
 }

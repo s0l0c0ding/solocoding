@@ -1,33 +1,18 @@
 <!-- Navigation -->
-<nav class="navbar  navbar-dark bg-dark fixed-top shadow-sm p-3 mb-5">
+<nav class="navbar navbar-light bg-white fixed-top shadow-sm p-3 mb-5">
     <div class="container">
-        <a class="navbar-brand" [routerLink]="''">
+        <div class="col-xs-9 mt-1">
+        <a class="navbar-brand text-monospace" [routerLink]="''">
             <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
             soloCoding
         </a>
+    </div>
+        <div class="col-xs-3">
+            <a class="btn btn-primary btn-sm mr-1 mt-1" [routerLink]="'/posts'">Blog</a>
+            <a class="btn btn-success btn-sm mr-1 mt-1">Portfolio</a>
+            <a class="btn btn-secondary btn-sm mt-1" [routerLink]="'/about'">About</a>
+          </div>
 
 
-
-        <!--
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-          -->
     </div>
 </nav>

@@ -24,13 +24,14 @@ export class DashboardComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subFilter.unsubscribe;
+    this.subFilter.unsubscribe();
   }
   
   currentTag(link: any): boolean {
     if (this.keyword && !link.keywords?.includes(this.keyword)) {
       return false;
-    } if (link.keywords) {
+    } 
+    if (link.keywords) {
       return true;
     }
   }

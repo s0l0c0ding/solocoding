@@ -8,6 +8,48 @@
             </div>
         </ng-container>
 
+        <div class="col-lg-4 col-md-4 mb-4 ml-auto">
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row justify-content-around">
+                        <div class="col-xs-1">
+                            <ul class="list-unstyled mt-1">
+                                <li>
+                                    <a class="btn btn-outline-danger" [routerLink]="['/posts']"
+                                        [queryParams]="{ filter: 'angular' }">Angular</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-1">
+                            <ul class="list-unstyled mt-1">
+                                <li>
+                                    <a class="btn btn-outline-success" [routerLink]="['/posts']"
+                                        [queryParams]="{ filter: 'spring' }">Spring</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-1">
+                            <ul class="list-unstyled mt-1">
+                                <li>
+                                    <a class="btn btn-outline-info" [routerLink]="['/posts']"
+                                        [queryParams]="{ filter: 'devops' }">Devops</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-1">
+                            <ul class="list-unstyled mt-1">
+                                <li>
+                                    <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 </div>
