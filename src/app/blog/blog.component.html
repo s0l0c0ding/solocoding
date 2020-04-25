@@ -10,7 +10,7 @@
             <h1 class="mt-4">{{(post$ | async).title}}</h1>
 
             <!-- Author -->
-            <p class="lead">
+            <p class="lead text-monospace">
                 by
                 <a [routerLink]="'/about'">{{(post$ | async).author}}</a>
             </p>

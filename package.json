@@ -25,6 +25,7 @@
     "@scullyio/init": "0.0.25",
     "@scullyio/ng-lib": "latest",
     "@scullyio/scully": "latest",
+    "bootstrap": "^4.4.1",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

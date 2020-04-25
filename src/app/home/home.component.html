@@ -27,8 +27,8 @@
 
     <!-- aeticles -->
     <div class="row text-center">
-        <ng-container *ngFor="let link of links$ | async; let last = last">
-            <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link)">
+        <ng-container *ngFor="let link of (links$ | async)?.slice().reverse(); let last = last; let i = index">
+            <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link, i)">
                 <app-post [link]=link [photo]=link.photo></app-post>
             </div>
         </ng-container>
