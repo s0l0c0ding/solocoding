@@ -1,7 +1,7 @@
 const {registerPlugin} = require('@scullyio/scully');
 
 const postCategoryPlugin = async (route, config = {}) => {
-  return Promise.resolve([
+  return ([
     {route: '/posts/devops'},
     {route: '/posts/spring'},
     {route: '/posts/angular'},
@@ -11,4 +11,3 @@ const postCategoryPlugin = async (route, config = {}) => {
 // DO NOT FORGET TO REGISTER THE PLUGIN
 const validator = async conf => [];
 registerPlugin('router', 'categoryIds', postCategoryPlugin, validator);
-//exports.postCategoryPlugin = postCategoryPlugin;
