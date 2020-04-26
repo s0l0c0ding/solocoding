@@ -1,3 +1,5 @@
+require('./plugins/postCategoryPlugin.js');
+
 exports.config = {
   projectRoot: "./src",
   projectName: "soloCoding-blog",
@@ -9,5 +11,8 @@ exports.config = {
         folder: "./blog"
       }
     },
+    '/posts/:categoryId':{
+      type: 'categoryIds',
+    }
   }
 };

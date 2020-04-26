@@ -16,8 +16,9 @@ export class DashboardComponent implements OnDestroy {
 
 
   constructor(private scully: ScullyRoutesService, private route: ActivatedRoute) {
-    this.subFilter = this.route.queryParams.subscribe(params => {
-      this.keyword = params['filter'];
+   // this.subFilter = this.route.queryParams.subscribe(params => {
+    this.subFilter = this.route.params.subscribe(params => {
+      this.keyword = params['categoryId'];
       this.linksFiltred$ = this.scully.available$;
 
     });

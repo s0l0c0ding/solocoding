@@ -1,15 +1,7 @@
 <div class="container">
-
-    <!-- aeticles -->
-    <div class="row text-center">
-        <ng-container *ngFor="let link of (linksFiltred$ |async).slice().reverse(); let last = last">
-            <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link)">
-                <app-post [link]=link [photo]=link.photo></app-post>
-            </div>
-        </ng-container>
-
+     <!-- Categories Widget -->
+    <div class="row align-content-end">
         <div class="col-lg-4 col-md-4 mb-4 ml-auto">
-            <!-- Categories Widget -->
             <div class="card my-4">
                 <h5 class="card-header">Categories</h5>
                 <div class="card-body">
@@ -17,24 +9,21 @@
                         <div class="col-xs-1">
                             <ul class="list-unstyled mt-1">
                                 <li>
-                                    <a class="btn btn-outline-danger" [routerLink]="['/posts']"
-                                        [queryParams]="{ filter: 'angular' }">Angular</a>
+                                    <a class="btn btn-outline-danger" [routerLink]="['/posts/angular']">Angular</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-xs-1">
                             <ul class="list-unstyled mt-1">
                                 <li>
-                                    <a class="btn btn-outline-success" [routerLink]="['/posts']"
-                                        [queryParams]="{ filter: 'spring' }">Spring</a>
+                                    <a class="btn btn-outline-success" [routerLink]="['/posts/spring']">Spring</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-xs-1">
                             <ul class="list-unstyled mt-1">
                                 <li>
-                                    <a class="btn btn-outline-info" [routerLink]="['/posts']"
-                                        [queryParams]="{ filter: 'devops' }">Devops</a>
+                                    <a class="btn btn-outline-info" [routerLink]="['/posts/devops']">Devops</a>
                                 </li>
                             </ul>
                         </div>
@@ -48,8 +37,15 @@
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
+    <!-- aeticles -->
+    <div class="row text-center">
+        <ng-container *ngFor="let link of (linksFiltred$ |async).slice().reverse(); let last = last">
+            <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link)">
+                <app-post [link]=link [photo]=link.photo></app-post>
+            </div>
+        </ng-container>
 
     </div>
 </div>
