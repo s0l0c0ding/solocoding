@@ -1,6 +1,6 @@
 <div class="container">
      <!-- Categories Widget -->
-    <div class="row align-content-end">
+    <div class="row align-content-end" *ngIf="keyword !=='it'">
         <div class="col-lg-4 col-md-4 mb-4 ml-auto">
             <div class="card my-4">
                 <h5 class="card-header">Categories</h5>
@@ -41,7 +41,7 @@
     </div>
     <!-- aeticles -->
     <div class="row text-center">
-        <ng-container *ngFor="let link of (linksFiltred$ |async).slice().reverse(); let last = last">
+        <ng-container *ngFor="let link of (linksFiltred$ |async).sort(sortDateFunc); let last = last">
             <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link)">
                 <app-post [link]=link [photo]=link.photo></app-post>
             </div>

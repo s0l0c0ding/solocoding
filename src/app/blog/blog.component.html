@@ -21,16 +21,18 @@
             <hr>
 
             <!-- Preview Image -->
-            <img class="col-6" [src]="(post$ | async).photo" alt="">
+            <figure class="figure">
+                <img class="col-12" [src]="(post$ | async).photo" alt="">
+                <figcaption class="figure-caption text-right">credit: {{(post$ | async)?.imgCredit}}</figcaption>
+              </figure>
             <hr>
             <!-- Post Content -->
-            <!-- This is where Scully will inject the static HTML -->
             <scully-content></scully-content>
             <hr>
 
         </div>
         <!-- Sidebar Widgets Column -->
-        <div class="col-md-4 mb-4 ml-auto">
+        <div class="col-md-4 mb-4 mt-4">
 
             <!-- Categories Widget -->
             <div class="card my-4">

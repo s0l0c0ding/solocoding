@@ -5,6 +5,7 @@ const postCategoryPlugin = async (route, config = {}) => {
     {route: '/posts/devops'},
     {route: '/posts/spring'},
     {route: '/posts/angular'},
+    {route: '/posts/it'},
   ]);
 }
 

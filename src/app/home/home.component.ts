@@ -23,4 +23,8 @@ export class HomeComponent implements OnInit {
       return true;
     } else {return false}
   }
+
+  sortDateFunc(a: any, b: any): number{
+    return new Date(b?.date).getTime() - new Date(a?.date).getTime() ;
+  }
 }

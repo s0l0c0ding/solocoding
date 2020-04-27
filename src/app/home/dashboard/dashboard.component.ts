@@ -16,7 +16,6 @@ export class DashboardComponent implements OnDestroy {
 
 
   constructor(private scully: ScullyRoutesService, private route: ActivatedRoute) {
-   // this.subFilter = this.route.queryParams.subscribe(params => {
     this.subFilter = this.route.params.subscribe(params => {
       this.keyword = params['categoryId'];
       this.linksFiltred$ = this.scully.available$;
@@ -35,5 +34,9 @@ export class DashboardComponent implements OnDestroy {
     if (link.keywords) {
       return true;
     }
+  }
+
+  sortDateFunc(a: any, b: any): number{
+    return new Date(b?.date).getTime() - new Date(a?.date).getTime() ;
   }
 }

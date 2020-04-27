@@ -5,29 +5,28 @@
     <!-- Photo by César Couto on Unsplash -->
     <div class="jumbotron my-4 text-body text-monospace" style="background-image: url(assets/lead.jpg)">
         <h1 class="display-4">Yet another blog !</h1>
-        <p class="lead"> Yes, here is the place for my blog about programming and software development, for sure you will
-            find
-            something
-            new,
-            as the developer journey is a continuous discovery and learning.</p>
+        <p class="lead">Yes, here where i document the things i learned about software development, maybe you will find
+            something new, as the developer journey is a continuous discovery and learning.</p>
     </div>
 
     <!-- articles Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">read</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon">
-                <svg class="bi bi-star-fill" width="0.5em" height="0.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-            </div>
-            <div class="divider-custom-line"></div>
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">read</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+            <svg class="bi bi-star-fill" width="0.5em" height="0.5em" viewBox="0 0 16 16" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
         </div>
+        <div class="divider-custom-line"></div>
+    </div>
 
     <!-- aeticles -->
     <div class="row text-center">
-        <ng-container *ngFor="let link of (links$ | async)?.slice().reverse(); let last = last; let i = index">
+        <ng-container *ngFor="let link of (links$ | async)?.sort(sortDateFunc); let last = last; let i = index">
             <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link, i)">
                 <app-post [link]=link [photo]=link.photo></app-post>
             </div>

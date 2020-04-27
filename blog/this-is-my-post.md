@@ -1,11 +1,12 @@
 ---
-title: This is my post
-description: blog description
+title: Spring post
+description: Here we will write about the backend end framework, Spring. 
 published: true
 date: 2020-04-10
 author: Bassem 
-slug: eng_spring_2020-03-31-blog
-photo: assets/postPhoto.png
+slug: eng_spring_spring posts
+photo: assets/stock/springLogo.png
+imgCredit: spring.io
 keywords:
   - spring
 language: en
@@ -14,5 +15,19 @@ output:
     css: post-details.component.css
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?
+## Spring
+Under this tag, i  will write about the backend end framework, Spring. 
+Meanwhile you can go the [official docs](https://spring.io/projects/spring-boot#learn), to dive in. 
+
+```java
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+@GetMapping("/helloworld")
+public String hello() {
+return "Hello World!";
+  }
+} 
+```
 
