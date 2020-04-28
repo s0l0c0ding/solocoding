@@ -5,7 +5,7 @@ published: true
 date: 2020-04-26
 author: Bassem 
 slug: eng_devops_devopsposts
-photo: assets/stock/git.jpg
+photo: assets/stock/git.webp
 imgCredit: Yancy Min on Unsplash
 keywords:
   - devops

@@ -22,9 +22,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    #- run: npm ci
+    # install angular
     - run: npm install -g @angular/cli
+    - run: npm install --save-dev @angular-devkit/build-angular
+    #build
     - run: ng build --prod --base-href /solocoding-blog/
-    - run: npm run scully
+    - run: npm run scully --scanRoutes --showGuessError
     - run: mkdir docs
     - run: cp -RT dist/static/ docs/
