@@ -5,7 +5,7 @@
     <!-- Photo by César Couto on Unsplash -->
     <div class="jumbotron my-4 text-body text-monospace" style="background-image: url(assets/lead.jpg)">
         <h1 class="display-4">Yet another blog !</h1>
-        <p class="lead">Yes, here where i document the things i learned about software development, maybe you will find
+        <p class="lead">Yes, soloCoding is the place where i document the things i learned, maybe you will find
             something new, as the developer journey is a continuous discovery and learning.</p>
     </div>
 
@@ -26,8 +26,8 @@
 
     <!-- aeticles -->
     <div class="row text-center">
-        <ng-container *ngFor="let link of (links$ | async)?.sort(sortDateFunc); let last = last; let i = index">
-            <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link, i)">
+        <ng-container *ngFor="let link of (links$ | async)?.sort(sortDateFunc).slice(0,3); let last = last;">
+            <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link)">
                 <app-post [link]=link [photo]=link.photo></app-post>
             </div>
         </ng-container>

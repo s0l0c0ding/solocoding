@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  currentTag(link: any, i: number): boolean {
-    if (link.keywords && i<=10) {
+  currentTag(link: any): boolean {
+    if (link.keywords) {
       return true;
     } else {return false}
   }
