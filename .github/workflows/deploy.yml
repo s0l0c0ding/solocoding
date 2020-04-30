@@ -12,21 +12,31 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Cache node modules
+      uses: actions/cache@v1
+      env:
+        cache-name: cache-node-modules
       with:
-        node-version: ${{ matrix.node-version }}
-    # install angular
-    - run: npm install -g @angular/cli
-    - run: npm install --save-dev @angular-devkit/build-angular
-    #build
-    - run: ng build --prod --base-href /solocoding-blog/
-    - run: npm run scully --scanRoutes --showGuessError
-    - run: mkdir docs
-    - run: cp -RT dist/static/ docs/
+        path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - name: Install Dependencies
+      run: npm install
+    - name: build app angular
+      run: ng build --prod --base-href /solocoding-blog/
+    - name: build static scully
+      run: npm run scully --scan --showGuessError
+    - name: Commit work
+      run: |
+        cp -RT dist/static/ docs/
+        git config --global user.name "s0l0c0ding"
+        git config --global user.email "s0l0c0ding@users.noreply.github.com"
+        git add .
+        git commit -m"workflow"
+        git push
+   
