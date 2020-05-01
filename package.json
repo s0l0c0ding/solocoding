@@ -11,7 +11,10 @@
     "scully": "scully",
     "scully:serve": "scully serve",
     "buildscully": "ng build && npm run scully -- --scanRoutes --showGuessError",
-    "scanscully": "npm run scully --scanRoutes --showGuessError"
+    "scanscully": "npm run scully --scanRoutes --showGuessError",
+    "copy404": "cp dist/soloCoding-blog/index.html dist/soloCoding-blog/404.html",
+    "moveToDocs": "mv dist/static/* docs/",
+    "buildGithub": "ng build --prod && npm run copy404 && npm run scanscully && npm run moveToDocs"
   },
   "private": true,
   "dependencies": {
