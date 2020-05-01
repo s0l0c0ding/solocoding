@@ -26,13 +26,15 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
     - name: Install Dependencies
-      run: |
-        npm install
-        npm link @angular/cli
+      run: sudo npm install
+    - name: Install cli
+      run: sudo npm install -g @angular/cli
     - name: build app angular
-      run: ng build --prod --base-href /solocoding-blog/
+      run: |
+        ng build --prod --base-href /solocoding-blog/
+        cp dist/soloCoding-blog/index.html dist/soloCoding-blog/404.html
     - name: build static scully
-      run: npm run scully --scan --showGuessError
+      run: npm run scully -- --scanRoutes --showGuessError
     - name: Commit work
       run: |
         cp -RT dist/static/ docs/
@@ -41,4 +43,3 @@ jobs:
         git add .
         git commit -m"workflow"
         git push
-   

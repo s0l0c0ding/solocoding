@@ -1,5 +1,5 @@
 ---
-title: Angular posts
+title: Angular post
 description: Here we will write about the front end framework, Angular. 
 published: true
 date: 2020-04-18
