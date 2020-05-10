@@ -23,7 +23,7 @@
             <!-- Preview Image -->
             <figure class="figure">
                 <img class="col-12" [src]="(post$ | async).photo" alt="">
-                <figcaption class="figure-caption text-right">credit: {{(post$ | async)?.imgCredit}}</figcaption>
+                <figcaption class="figure-caption text-right" *ngIf="(post$ | async).imgCredit">credit: {{(post$ | async).imgCredit}}</figcaption>
               </figure>
             <hr>
             <!-- Post Content -->
