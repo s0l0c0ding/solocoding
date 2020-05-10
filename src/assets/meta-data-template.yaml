@@ -1,6 +1,11 @@
+published: false
+title:
+description:
 date:
-author: Bassem 
+author: Bassem
+slug: eng_ 
 photo: assets/postPhoto.png
+imgCredit: solocoding.dev
 keywords:
   - angular
   - spring

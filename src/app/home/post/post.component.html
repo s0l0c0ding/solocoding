@@ -1,7 +1,14 @@
 <div [ngClass]="cardClass">
+    <div class="card-header">
+        <div class="container">
+            <div class="row justify-content-end">
+            <span class="badge badge-dark ">{{link.language}}</span>
+        </div>
+        </div>
+    </div>
     <img class="card-img-top" [src]="photo" alt="photo">
     <div class="card-body">
-        <h4 class="card-title">{{link.title}}</h4>
+        <h5 class="card-title">{{link.title}}</h5>
         <p class="card-text">{{link.description}}</p>
     </div>
     <div class="card-footer">
