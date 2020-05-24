@@ -5,31 +5,33 @@
 
         <!-- Post Content Column -->
         <div class="col-lg-8">
+            <ng-container *ngIf="post$ | async as post">
 
-            <!-- Title -->
-            <h1 class="mt-4">{{(post$ | async).title}}</h1>
+                <!-- Title -->
+                <h1 class="mt-4">{{post.title}}</h1>
 
-            <!-- Author -->
-            <p class="lead text-monospace">
-                by
-                <a [routerLink]="'/about'">{{(post$ | async).author}}</a>
-            </p>
-            <hr>
+                <!-- Author -->
+                <p class="lead text-monospace">
+                    by
+                    <a [routerLink]="'/about'">{{post.author}}</a>
+                </p>
+                <hr>
 
-            <!-- Date/Time -->
-            <p>Posted on {{(post$ | async).date |date}} </p>
-            <hr>
+                <!-- Date/Time -->
+                <p>Posted on {{post.date |date}} </p>
+                <hr>
 
-            <!-- Preview Image -->
-            <figure class="figure">
-                <img class="col-12" [src]="(post$ | async).photo" alt="">
-                <figcaption class="figure-caption text-right" *ngIf="(post$ | async).imgCredit">credit: {{(post$ | async).imgCredit}}</figcaption>
-              </figure>
-            <hr>
+                <!-- Preview Image -->
+                <figure class="figure">
+                    <img class="col-12" [src]="post.photo" alt="">
+                    <figcaption class="figure-caption text-right" *ngIf="post.imgCredit">credit: {{post.imgCredit}}
+                    </figcaption>
+                </figure>
+                <hr>
+            </ng-container>
             <!-- Post Content -->
             <scully-content></scully-content>
             <hr>
-
         </div>
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4 mb-4 mt-4">
