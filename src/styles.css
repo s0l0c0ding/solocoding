@@ -1,10 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* include CSS for prism toolbar */
-@import '~prismjs/plugins/toolbar/prism-toolbar.css';
-/* check node_modules/prismjs/themes/ for the available themes */
-@import '~prismjs/themes/prism.css';
-
 .small-icon {
     max-width: 25px;
     max-height: 25px;
@@ -42,3 +37,31 @@
   .divider-custom.divider-light .divider-custom-icon {
     color: #fff !important;
   }
+
+/* CODE */
+app-code > pre,
+pre {
+  background: #d7d2d2;
+  color: var(--scully-offwhite);
+  border-radius: 8px;
+  border-top:#423e3e8c solid 10px;
+  overflow-x: auto;
+  min-height: 100px;
+  padding: 16px 35px 35px 20px;
+}
+
+app-code > pre > code::before,
+pre > code::before {
+  background-color: #bfb7b7;
+  border-radius: 3px;
+  border-left: 3px solid #bfb7b7;
+  border-right: 3px solid #bfb7b7;
+  content: attr(class);
+  text-indent: -9ch;
+  text-transform: uppercase;
+  display: block;
+  padding: 2px 2px;
+  margin-bottom: 16px;
+  width: fit-content;
+  overflow: hidden;
+}

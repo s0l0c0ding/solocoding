@@ -31,7 +31,7 @@ export class AppComponent {
       this.scully.getCurrent().pipe(
         map(current => current.title )
       ).subscribe(
-        title => this.postTitle= title
+        title => this.postTitle = title ? title : 'Blog'
       );
       console.log(this.postTitle);
       
