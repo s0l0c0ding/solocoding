@@ -28,7 +28,7 @@
     "@angular/router": "~9.1.9",
     "@scullyio/init": "0.0.25",
     "@scullyio/ng-lib": "latest",
-    "@scullyio/scully": "latest",
+    "@scullyio/scully": "0.0.92",
     "bootstrap": "^4.4.1",
     "guess-parser": "^0.4.18",
     "rxjs": "~6.5.5",
