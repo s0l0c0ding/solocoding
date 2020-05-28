@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +18,7 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     ScullyLibModule
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

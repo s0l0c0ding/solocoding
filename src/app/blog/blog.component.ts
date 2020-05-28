@@ -1,7 +1,6 @@
-import { Component, ViewEncapsulation, AfterViewChecked } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ScullyRoute, ScullyRoutesService } from '@scullyio/ng-lib';
 import { Observable } from 'rxjs';
-import { HighlightService } from '../service/highlight.service';
 
 declare var ng: any;
 
@@ -13,15 +12,12 @@ declare var ng: any;
   encapsulation: ViewEncapsulation.Emulated
 
 })
-export class BlogComponent implements AfterViewChecked {
+export class BlogComponent {
 
   post$ :Observable<ScullyRoute>;
 
-  constructor(private scully: ScullyRoutesService, private highlightService: HighlightService) {
+  constructor(private scully: ScullyRoutesService) {
   this.post$= this.scully.getCurrent();
-  }
-  ngAfterViewChecked(): void {
-    this.highlightService.highlightAll();
   }
 
 }
