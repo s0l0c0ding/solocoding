@@ -10,7 +10,7 @@ import { ScullyRoutesService } from '@scullyio/ng-lib';
 })
 export class AppComponent {
 
-  postTitle: string;
+  // postTitle: string;
 
   public constructor(private titleService: Title,
     private router: Router,
@@ -29,18 +29,16 @@ export class AppComponent {
       filter(route => route.outlet === 'primary')
     ).subscribe((route: ActivatedRoute) => {
       this.scully.getCurrent().pipe(
-        map(current => current.title )
+        map(current => current.title)
       ).subscribe(
-        title => this.postTitle = title ? title : 'Blog'
-      );
-      console.log(this.postTitle);
-      
-      if(this.postTitle){
-        this.titleService.setTitle(this.postTitle);
-        
-      } else{
-      this.titleService.setTitle(route.snapshot.data['title']);
-    }
+        title => {
+      //  this.postTitle = title ? title : 'Blog';
+          if (title) {
+            this.titleService.setTitle(title);
+          } else {
+            this.titleService.setTitle(route.snapshot.data['title']);
+          }
+        });
     });
   }
 
