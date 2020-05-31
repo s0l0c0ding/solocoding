@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
-import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { SocialTagsService } from './services/social-tags.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,36 +8,9 @@ import { ScullyRoutesService } from '@scullyio/ng-lib';
 })
 export class AppComponent {
 
-  // postTitle: string;
+  public constructor(private tagsService: SocialTagsService) {
+    tagsService.setTitleAndTags();
 
-  public constructor(private titleService: Title,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private scully: ScullyRoutesService) {
-
-    this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map(() => this.activatedRoute),
-      map(route => {
-        while (route.firstChild) {
-          route = route.firstChild;
-        }
-        return route;
-      }),
-      filter(route => route.outlet === 'primary')
-    ).subscribe((route: ActivatedRoute) => {
-      this.scully.getCurrent().pipe(
-        map(current => current.title)
-      ).subscribe(
-        title => {
-      //  this.postTitle = title ? title : 'Blog';
-          if (title) {
-            this.titleService.setTitle(title);
-          } else {
-            this.titleService.setTitle(route.snapshot.data['title']);
-          }
-        });
-    });
   }
 
 }
