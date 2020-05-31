@@ -2,9 +2,11 @@ import { setPluginConfig, ScullyConfig } from '@scullyio/scully';
 import './plugins/postCategoryPlugin.js';
 import { pluginTypes } from '@scullyio/scully/lib/pluginManagement/pluginRepository';
 
-setPluginConfig('md', pluginTypes[2] ,{ enableSyntaxHighlighting: true });
-const {DisableAngular} = require('scully-plugin-disable-angular');
+
+const { DisableAngular } = require('scully-plugin-disable-angular');
 const postRenderers = [DisableAngular];
+setPluginConfig('md', pluginTypes[2], { enableSyntaxHighlighting: true });
+setPluginConfig(DisableAngular, 'render', {removeState: true});
 
 export const config: ScullyConfig = {
     projectName: 'soloCoding-blog',
