@@ -13,15 +13,13 @@ export class SocialTagsService {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private scully: ScullyRoutesService,
-    private meta: Meta) { }
+    private meta: Meta) {}
 
   readonly tagDescription: string = 'A blog about programming and software development, writing about Spring, Quarkus, java, Angular, DevOps, Docker and kubernetes';
   readonly tagImage: string = 'assets/logo.png';
   readonly urlPrefix: string = 'https://solocoding.dev';
   readonly siteName: string = 'soloCoding';
   readonly userTwitter: string = '@s0l0c0ding';
-
-  twitterTags: any = {}
 
   setTitleAndTags() {
     this.router.events.pipe(

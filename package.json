@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "scully": "scully",
     "scully:serve": "scully serve",
-    "buildscully": "ng build && npm run scully -- --scanRoutes --showGuessError",
+    "buildscully": "npm run build -- --prod --stats-json && npm run scully -- --scanRoutes --showGuessError",
     "scanscully": "npm run scully -- --scanRoutes --showGuessError",
     "copy404": "cp dist/soloCoding-blog/index.html dist/soloCoding-blog/404.html",
     "moveToDocs": "mv dist/static/* docs/",
@@ -52,7 +52,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
-    "scully-plugin-disable-angular": "^3.1.1",
+    "scully-plugin-disable-angular": "latest",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
