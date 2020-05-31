@@ -1,10 +1,10 @@
 ---
 published: true
-title: Come impostare il titolo e i meta tag nella nostra applicazione Angular / Scully
+title: Come impostare il titolo e i meta tag nelle applicazioni Angular/Scully
 description: Dato che  un'applicazione Angular non può essere avviata (bootstrapped) sull'intero documento HTML, non è possibile utilizzare la tecnica di "data binding" per una proprietà come il titolo, ad esempio.
-date: 2020-05-01
+date: 2020-06-01
 author: Bassem
-slug: it_angular_Come impostare_titolo_metatag_applicazione_Angular_Scully
+slug: it_angular_titolo_metatag_Angular_Scully
 photo: assets/stock/social.webp
 imgCredit: NordWood Themes on Unsplash
 keywords:
@@ -17,18 +17,18 @@ output:
 ---
 
 Angular è un framework per la  progettazione di applicazioni web a pagina singola. A volte dobbiamo cambiare il titolo della pagina e i suoi "meta tag", mentre navighiamo da una pagina all'altra.
-Dato che  un'applicazione Angular non può essere avviata (bootstrapped) sull'intero documento HTML, non è possibile utilizzare la tecnica di "data binding" per una proprietà come il titolo, ad esempio. Quindi, per raggiungere questo obiettivo, facciamo affidamento sul [Title](https://angular.io/api/platform-browser/Title) e sul [Meta](https://angular.io/api/platform-browser/Meta) servizi predisposti.  
+Dato che  un'applicazione Angular non può essere "bootstrapped" (avviata) sull'intero documento HTML, non è possibile utilizzare la tecnica di "data binding" per una proprietà come il titolo, ad esempio. Quindi, per raggiungere questo obiettivo, facciamo affidamento sui servizi predisposti dal framework, [Title](https://angular.io/api/platform-browser/Title) e [Meta](https://angular.io/api/platform-browser/Meta).  
 <br>
-In questo articolo, condivido come ho raggiungo questo obiettivo, nel mio blog  basato su Angular e [Scully](scully.io). Eseguiamo i seguenti semplici passaggi:
+In questo articolo, condivido come ho raggiungo questo obiettivo, nel mio blog basato su Angular e [Scully](scully.io). Eseguiamo i seguenti semplici passaggi:
  1. Scriviamo i vari  titoli nell'attributo dati di  [Route](https://angular.io/api/router/Route);
  2. Creazione di un servizio per recuperare il titolo e aggiornarlo sulla nostra pagina utilizzando il servizio Title;
- 3.  Aggiungiamo tutti i meta tag necessari al nostro index.html con un contenuto vuoto;
- 4.  Modifica del servizio, al fine di aggiornare i meta tag utilizzando il servizio Meta.
+ 3. Aggiungiamo tutti i meta tag necessari, al nostro index.html con un contenuto vuoto;
+ 4. Modifica del servizio, per aggiornare i meta tag, utilizzando il servizio Meta.
 <br>
 
 **Route data**
 <br>
-Nel seguente  codice, possiamo vedere come aggiungere l'attributo di dati al nostro array di route in AppRoutingModule:
+Nel seguente pezzo di codice, possiamo vedere come si aggiunge l'attributo dati al nostro array di route nel AppRoutingModule:
 ```TypeScript
 const routes: Routes = [
   { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), data:{'title': "soloCoding"} },
@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'portfolio', loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule), data:{'title': "Portfolio"} },
 ];
 ```
-**Custom service**
+**Custom service SocialTagsService**
 <br>
 Ed ecco come aggiorneremo il nostro titolo "in modo dinamico":
 ```TypeScript
@@ -77,17 +77,17 @@ setTitleAndTags() {
   }
 }
 ```
-Come potete vedere nel codice sopra, dobbiamo importare Router e ActivatedRoute in modo da poter iscriversi agli eventi del router e cambiare il titolo con il servizio Title, siccome sto usando i moduli, dobbiamo avere un  while loop per arrivare al'ultimo figlio.
+Come potete vedere nel codice sopra, dobbiamo importare Router e ActivatedRoute in modo da poter iscriversi agli eventi del router e cambiare il titolo usando il servizio Title, siccome sto usando i moduli, dobbiamo avere un  while loop per arrivare al'ultimo figlio.
 <br>
-Vale la pena ricordare che il servizio Title fornisce anche un metodo get (), per ottenere il titolo del documento HTML corrente.
+Vale la pena ricordare che il servizio Title fornisce anche un metodo get(), per ottenere il titolo del documento HTML corrente.
 <br>
 Un'altra cosa da evidenziare è che nel secondo subscribe, sto usando il [Scully service](https://scully.io/docs/scully-lib-core) per decidere se la pagina corrente è generata da un file markdow o meno, semplicemente testando l'attributo title, e se questo ultimo risulta vero, ottengo il titolo, altrimenti uso i dati del percorso.  
 <br>
 **Aggiunta meta tags**  
-Quando una pagina del sito Web viene condivisa su Facebook o Twitter, il portale va alla  ricerca di speciali metatag nel nostro documento HTML. L'assenza di questi tag, può causare una cattiva rappresentazione del post. Peggio ancora, Twitter, per esempio mostra solo l'indirizzo web. Nel 2010, Facebook ha introdotto [Open Graph tags](https://ogp.me/) per standardizzare i meta tag, necessari alla condivisione  una pagina sui social media.  
+Quando una pagina del sito Web viene condivisa su Facebook o Twitter, il portale va alla ricerca di metatag speciali nel nostro documento HTML. L'assenza di questi tag, può causare una cattiva rappresentazione del post. Peggio ancora, Twitter, per esempio mostra solo l'indirizzo web. Nel 2010, Facebook ha introdotto [Open Graph tags](https://ogp.me/) per standardizzare i meta tag, necessari alla condivisione una pagina sui social media.  
 <br>
 Twitter gestisce la scheda in modo diverso:
-> Quando il processore della scheda Twitter cerca i tag in una pagina, per prima cosa verifica la proprietà specifica di Twitter e se non fosse presente, torna alle proprietà di Open Graph supportata.  
+"Quando il processore della scheda Twitter cerca i tag in una pagina, per prima cosa va a verifica la proprietà specifica di Twitter e se non fosse presente, controlla le proprietà di Open Graph supportata."  
 
 Ma è necessario avere il seguente tag: 
 ```Html
@@ -103,7 +103,7 @@ Ai fini di questo articolo, ci concentriamo principalmente su immagine, titolo e
   <meta name="og:type" property="og:type" content="">
 ```
 **Aggiornamento SocialTagsService**  
-Ora torniamo al nostro file typeScript, per modificare il servizio, come prima cosa,  iniettiamo il servizio Meta e aggiorniamo i tag nelle rispettive sezionei:
+Ora torniamo al nostro file typeScript, per modificare il servizio, come prima cosa, iniettiamo il servizio Meta e aggiorniamo i tag nelle rispettive sezionei:
 ```TypeScript
 export class SocialTagsService {
 
@@ -132,7 +132,7 @@ export class SocialTagsService {
     });
   }
 ```
-Una cosa da ricordare è che il servizio Meta fornisce anche i metodi remove (), add () e get (). Nel mio caso ho preferito aggiungere tutti i tag con contenuto vuoto nel mio index.html e aggiornare il tutto con il servizio, per evitare duplicazione di codice. 
+Una cosa da ricordare è che il servizio Meta fornisce anche i metodi remove(), add() e get(). Nel mio caso ho preferito aggiungere tutti i tag con il contenuto vuoto nel index.html e aggiornare il tutto con il servizio, per evitare duplicazione di codice. 
 <br>
 
 Infine tutto il codice del SocialTagsService è disponibile su [GitHub](https://github.com/s0l0c0ding/solocoding/tree/master/src/app/services).

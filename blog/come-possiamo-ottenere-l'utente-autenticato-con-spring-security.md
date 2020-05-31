@@ -73,7 +73,7 @@ quindi, cerchiamo di analizzare  questo test:
 @WebMvcTest(controllers = UserController.class)
 ```
 L'annotazione [@WebMvcTest](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/web/servlet/WebMvcTest.html)
- ci aiuta  nel eseguire un test di integrazione,  con solo, la configurazione spring relativa ai test MVC. La parte "controller", indica che testiamo  solo la  UserController.class, se la togliessimo  tutti i controller verrebbero  istanziati (nel contesto dell'applicazione). 
+ ci aiuta  nel eseguire un test di integrazione, con solo, la configurazione spring relativa ai test MVC. La parte "controller", indica che testiamo  solo la  UserController.class, se la togliessimo  tutti i controller verrebbero  istanziati (nel contesto dell'applicazione). 
 ```java
 	@Test
 	void shouldGive401WithoutUser() throws Exception {

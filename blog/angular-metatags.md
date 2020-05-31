@@ -1,10 +1,10 @@
 ---
 published: true
-title: How to set up the title and the meta tags in our Angular / Scully application
-description: Angular application can't be bootstrapped on the entire HTML document,it is not possible to use data binding technique for a property like the title for instance.
-date: 2020-05-01
+title: Setting up the title and the meta tags in Angular/Scully applications
+description: Angular application can't be bootstrapped on the entire HTML document,it is not possible to use the data binding technique for a property like the title for instance.
+date: 2020-06-01
 author: Bassem
-slug: eng_angular_setup_title_meta_tags_in_Angular_Scully_application
+slug: eng_angular_title_meta_tags_Angular_Scully
 photo: assets/stock/social.webp
 imgCredit: NordWood Themes on Unsplash
 keywords:
@@ -17,7 +17,7 @@ output:
 ---
 
 Angular is an application design framework for building a single page apps. Sometimes we have to change the page title and its meta tags, as we navigate through the pages.  
-Since an Angular application can't be bootstrapped on the entire HTML document it is not possible to use data binding technique for a property like the title for instance. So to achieve such goals, we are going to rely on the [Title](https://angular.io/api/platform-browser/Title) and the [Meta](https://angular.io/api/platform-browser/Meta) services.  
+Since an Angular application can't be bootstrapped on the entire HTML document it is not possible to use the data binding technique for a property like the title for instance. So to achieve such goals, we are going to rely on the [Title](https://angular.io/api/platform-browser/Title) and the [Meta](https://angular.io/api/platform-browser/Meta) services.  
 <br>
 In this article, I am going to share how I reached this target, in my blog based on Angular and [Scully](scully.io). We are going through the following steps:
  1. Storing the different titles in the [route's](https://angular.io/api/router/Route) data attribute;
@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'portfolio', loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule), data:{'title': "Portfolio"} },
 ];
 ```
-**Custom service**
+**Custom service SocialTagsService**
 <br>
 And here how we are going to update our title "dynamically": 
 ```TypeScript
@@ -77,7 +77,7 @@ setTitleAndTags() {
   }
 }
 ```
-As you can see in the above code, we need to import Router and ActivatedRoute so that we can subscribe to the router events and change the title with the Title service, also as I am using modules in my app, we need to have the while loop to find the last child.
+As you can see in the above code, we need to import Router and ActivatedRoute so that we can subscribe to the router events and change the title using the Title service, also as I am using modules in my app, we need to have the while loop to find the last child.
 <br>
 Worth mentioning that the Title service provide also a get() method, to obtain the title of the current HTML document.
 <br>
@@ -86,10 +86,10 @@ Another thing to higlight, is that in the second subscribe, I am using the [Scul
 **Adding meta tags**  
 When a website page is shared on Facebook or Twitter, the web application starts looking for special meta tags in our HTML document. The absence of these tags, may leads to a bad visulation. Worse, Twitter will only display the web address. In 2010, Facebook introduced [Open Graph tags](https://ogp.me/) to standardize meta tags, needed when a page is shared on social media.  
 <br>
-Twitter handels the card diffrently:
-> When the Twitter card processor looks for tags on a page, it first
-> checks for the Twitter-specific property, and if not present, falls
-> back to the supported Open Graph property.  
+Twitter handels the card diffrently:  
+"When the Twitter card processor looks for tags on a page, it first
+checks for the Twitter-specific property, and if not present, falls
+back to the supported Open Graph property."  
 
 But the card tag is needed: 
 ```Html
