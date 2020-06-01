@@ -23,7 +23,8 @@ In this article, I am going to share how I reached this target, in my blog based
  1. Storing the different titles in the [route's](https://angular.io/api/router/Route) data attribute;
  2. Creating a service to retrieve the title and update it on our page using the Title service;
  3.  Adding all the meta tags needed to our index.html with a blank content;
- 4.  Modify the service, in order to update the meta tags using the Meta service.
+ 4.  Modify the service, in order to update the meta tags using the Meta service;
+ 5.  Injecting the new service in app.component.ts.
 <br>
 
 **Route's data**
@@ -134,7 +135,16 @@ export class SocialTagsService {
     });
   }
 ```
-One thing to remind is that, the Meta service provides also remove(), add() and get() methods. In my case I preferred to added all the tags with blank content in my index file and update it with the service, to avoid some code duplication. 
+One thing to remind is that, the Meta service provides also remove(), add() and get() methods. In my case I preferred to added all the tags with blank content in my index file and update it with the service, to avoid some code duplication.   
 <br>
+**Injecting SocialTagsService in AppComponent**  
+Final step is to use our service in the app.component.ts:
+```TypeScript
+export class AppComponent {
 
+  public constructor(private tagsService: SocialTagsService) {
+    this.tagsService.setTitleAndTags();
+  }
+}
+```
 Finally all the code of the SocialTagsService can be found on [GitHub](https://github.com/s0l0c0ding/solocoding/tree/master/src/app/services).

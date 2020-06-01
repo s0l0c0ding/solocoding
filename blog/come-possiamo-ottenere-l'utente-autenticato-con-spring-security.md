@@ -9,13 +9,14 @@ photo: assets/stock/AuthenticationPrincipal.webp
 imgCredit: solocoding.dev
 keywords:
   - spring
+  - spring security
 language: it
 output:
   html_document:
     css: post-details.component.css
 ---
 
-In questo post vediamo  come si può  ottenere l'utente autenticato, nella nostra applicazione spring, usando due metodi diversi; quindi iniziamo.
+In questo post vediamo  come si può  ottenere l'utente autenticato, nella nostra applicazione spring, usando due metodi diversi.
 
 Se si desidera iniziare da zero, è possibile scaricare il codice di partenza da [springInitializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.2.6.RELEASE&packaging=jar&jvmVersion=11&groupId=dev.solocoding&artifactId=authenticated&name=authenticated&description=spring-tips%20get%20current%20authenticated&packageName=dev.solocoding.authenticated&dependencies=security,web,lombok) (usiamo le dipendenze security e web).  
 
@@ -68,7 +69,7 @@ class AuthenticatedApplicationTests {
 
 }
 ```
-quindi, cerchiamo di analizzare  questo test: 
+quindi, cerchiamo di analizzare il test: 
 ```java
 @WebMvcTest(controllers = UserController.class)
 ```
@@ -80,7 +81,7 @@ L'annotazione [@WebMvcTest](https://docs.spring.io/spring-boot/docs/current/api/
 		mockMvc.perform(get(parUrl)).andExpect(status().is(HttpStatus.UNAUTHORIZED.value()));
 	}
 ```
-Questo primo test è solo per assicurarsi che spring security funzioni e che i nostri endpoint siano sicuri (da tenere presente che get() e status() sono importazioni statici).
+Questo primo test, è solo per assicurarsi che spring security funzioni e che i nostri endpoint siano sicuri (da tenere presente che get() e status() sono importazioni statici).
 
 ```java
 @Test

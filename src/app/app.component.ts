@@ -9,7 +9,7 @@ import { SocialTagsService } from './services/social-tags.service';
 export class AppComponent {
 
   public constructor(private tagsService: SocialTagsService) {
-    tagsService.setTitleAndTags();
+    this.tagsService.setTitleAndTags();
 
   }
 

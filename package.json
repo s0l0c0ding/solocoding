@@ -28,7 +28,7 @@
     "@angular/router": "~9.1.9",
     "@scullyio/init": "0.0.25",
     "@scullyio/ng-lib": "latest",
-    "@scullyio/scully": "0.0.92",
+    "@scullyio/scully": "0.0.93",
     "bootstrap": "^4.4.1",
     "guess-parser": "^0.4.18",
     "rxjs": "~6.5.5",
@@ -52,7 +52,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
-    "scully-plugin-disable-angular": "latest",
+    "scully-plugin-disable-angular": "4.0.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
