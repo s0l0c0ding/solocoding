@@ -191,6 +191,7 @@ E infine il test di aggiornamento:
 ```
 Come potete vedere, salviamo una nuova entità, poi la aggiorniamo e alla fine ci assicuriamo che la tabella di backup ha due post (quello originale e quello aggiornato). Vorrei evidenziare che, in questo caso, per forzare il l'inserimento, prima abbiamo usato saveAndFlush (post) e dopo la query di conteggio.
 <br>
+Tutto qua, il codice completo può essere trovato su [GitHub](https://github.com/s0l0c0ding/spring-tips/tree/master/entitylistener).
+<br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nLLyKkXRe0Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
-Tutto qua, il codice completo può essere trovato su [GitHub](https://github.com/s0l0c0ding/spring-tips/tree/master/entitylistener).
