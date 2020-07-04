@@ -1,7 +1,7 @@
 ---
 title: Angular post
 description: Here we will write about the front end framework, Angular. 
-published: true
+published: false
 date: 2020-04-18
 author: Bassem 
 slug: eng_angular_Angular posts
