@@ -5,10 +5,11 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { PostComponent } from './post/post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContactComponent } from '../contact/contact.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, PostComponent, DashboardComponent],
+  declarations: [HomeComponent, PostComponent, DashboardComponent, ContactComponent],
   imports: [
     CommonModule,
     HomeRoutingModule
