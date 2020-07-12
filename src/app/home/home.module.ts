@@ -9,7 +9,7 @@ import { ContactComponent } from '../contact/contact.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, PostComponent, DashboardComponent, ContactComponent],
+  declarations: [HomeComponent, PostComponent, DashboardComponent],
   imports: [
     CommonModule,
     HomeRoutingModule
