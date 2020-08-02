@@ -37,6 +37,8 @@ jobs:
           ${{ runner.os }}-
     - name: Install Dependencies
       run: sudo npm install
+    - name: Test
+      run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
     - name: build app angular
       run: |
         npm run build -- --prod --stats-json
