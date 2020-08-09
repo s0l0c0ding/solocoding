@@ -8,30 +8,25 @@ import { DashboardComponent } from './dashboard.component';
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
-  let getScullySpy: Partial<ScullyRoutesService>;
-  let getRoutSpy: Partial<ActivatedRoute>;
-
+  
   beforeEach(() => {
     const link = {
-      keywords:['angular']
+      keywords:'angular',
+       date: '2020-04-26'
     }
-
     const params = {
       categoryId: 'angular'
     }
 
-    // Create a fake 
-    const scully = jasmine.createSpyObj('ScullyRoutesService', ['available$']);
-    getScullySpy = scully.available$.and.returnValue(of(link));
-
-    const route = jasmine.createSpyObj('ActivatedRoute', ['params']);
-    getRoutSpy = route.params.and.returnValue(of(params));
-
     TestBed.configureTestingModule({
       declarations: [DashboardComponent],
       providers: [
-        { provide: ScullyRoutesService, useValue: scully },
-        { provide: ActivatedRoute, useValue: route}
+        { provide: ScullyRoutesService, useValue: {
+          available$: of([link])
+        } },
+        { provide: ActivatedRoute, useValue: {
+          params: of(params)
+        }}
       ]
     });
     
@@ -40,7 +35,18 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy;
+  });
+
+  it('should inject props', () => {
+    expect(component.keyword).toEqual('angular');
+  });
+
+  it('should have <li> with "Angular"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const p = bannerElement.querySelector('li');
+    expect(p.textContent).toContain('Angular');
+  });
+
 });
