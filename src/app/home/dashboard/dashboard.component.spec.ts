@@ -1,25 +1,52 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { of } from 'rxjs';
 import { DashboardComponent } from './dashboard.component';
+
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
-    })
-    .compileComponents();
-  }));
-
+  
   beforeEach(() => {
+    const link = {
+      keywords:'angular',
+       date: '2020-04-26'
+    }
+    const params = {
+      categoryId: 'angular'
+    }
+
+    TestBed.configureTestingModule({
+      declarations: [DashboardComponent],
+      providers: [
+        { provide: ScullyRoutesService, useValue: {
+          available$: of([link])
+        } },
+        { provide: ActivatedRoute, useValue: {
+          params: of(params)
+        }}
+      ]
+    });
+    
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeTruthy;
   });
+
+  it('should inject props', () => {
+    expect(component.keyword).toEqual('angular');
+  });
+
+  it('should have <li> with "Angular"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const p = bannerElement.querySelector('li');
+    expect(p.textContent).toContain('Angular');
+  });
+
 });

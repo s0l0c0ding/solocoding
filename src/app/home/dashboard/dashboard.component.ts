@@ -12,7 +12,7 @@ export class DashboardComponent implements OnDestroy {
 
   keyword: string;
   subFilter: Subscription;
-  linksFiltred$: Observable<any> = this.scully.available$;
+  linksFiltred$: Observable<any>;
 
 
   constructor(private scully: ScullyRoutesService, private route: ActivatedRoute) {

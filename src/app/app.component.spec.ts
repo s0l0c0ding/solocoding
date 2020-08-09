@@ -1,35 +1,34 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SocialTagsService } from './services/social-tags.service';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  let comp: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let tagServiceStub: Partial<SocialTagsService>;
+
+
+  beforeEach(() => {
+    // stub tag for test purposes
+    tagServiceStub = {
+      setTitleAndTags: () => { }
+    };
+
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+      declarations: [AppComponent],
+      providers: [{ provide: SocialTagsService, useValue: tagServiceStub }],
+    });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    fixture = TestBed.createComponent(AppComponent);
+    comp = fixture.componentInstance;
+
+    // UserService from the root injector
+    // userService = TestBed.inject(SocialTagsService);
+
   });
 
-  it(`should have as title 'soloCoding'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('soloCoding');
+  it('should create', () => {
+    expect(comp).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('soloCoding-blog app is running!');
-  });
 });
