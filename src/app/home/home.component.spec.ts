@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
 import { of } from 'rxjs';
 import { HomeComponent } from './home.component';
+import { PostComponent } from './post/post.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 describe('HomeComponent', () => {
@@ -19,7 +21,7 @@ describe('HomeComponent', () => {
     getScullySpy = scully.available$.and.returnValue(of(link));
 
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [HomeComponent, PostComponent, DashboardComponent],
       providers: [
         { provide: ScullyRoutesService, useValue: scully }
       ]

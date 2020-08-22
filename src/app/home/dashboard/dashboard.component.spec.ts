@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
 import { of } from 'rxjs';
 import { DashboardComponent } from './dashboard.component';
+import { PostComponent } from '../post/post.component';
 
 
 describe('DashboardComponent', () => {
@@ -19,7 +20,7 @@ describe('DashboardComponent', () => {
     }
 
     TestBed.configureTestingModule({
-      declarations: [DashboardComponent],
+      declarations: [DashboardComponent, PostComponent],
       providers: [
         { provide: ScullyRoutesService, useValue: {
           available$: of([link])
@@ -41,12 +42,6 @@ describe('DashboardComponent', () => {
 
   it('should inject props', () => {
     expect(component.keyword).toEqual('angular');
-  });
-
-  it('should have <li> with "Angular"', () => {
-    const bannerElement: HTMLElement = fixture.nativeElement;
-    const p = bannerElement.querySelector('li');
-    expect(p.textContent).toContain('Angular');
   });
 
 });
