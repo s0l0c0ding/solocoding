@@ -7,24 +7,43 @@
         <div class="col-lg-8">
 
             <!-- Title -->
-            <h1 class="mt-4">{{(post$ | async).title}}</h1>
+            <h1 class="mt-4">{{post.title}}</h1>
 
-            <!-- Author -->
+            <!-- Author Date/Time -->
             <p class="lead text-monospace">
-                by
-                <a [routerLink]="'/about'">{{(post$ | async).author}}</a>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                    <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                  </svg>
+                <a [routerLink]="'/about'" class="btn btn-light btn-sm">{{post.author}}</a>
+                <small class="mr-2" title="{{post.date |date }}">{{post.date |date:'dd/LL'}}
+                </small>
             </p>
-            <hr>
-
-            <!-- Date/Time -->
-            <p>Posted on {{(post$ | async).date |date}} </p>
+            <!-- tags -->
+            <div class="row ml-1">
+                <div class="col-xs-1 mr-2 " *ngFor="let tag of post.keywords">
+                    <ul class="list-unstyled mt-1">
+                        <li>
+                            <a [ngClass]=" badge.get(tag)" [routerLink]="['/posts/'+tag]">{{tag}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-1 mr-2">
+                    <ul class="list-unstyled mt-1">
+                        <li>
+                            <a class="badge badge-secondary" [routerLink]="['/posts']">All</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <hr>
 
             <!-- Preview Image -->
             <figure class="figure">
-                <img class="col-12" [src]="(post$ | async).photo" alt="">
-                <figcaption class="figure-caption text-right" *ngIf="(post$ | async).imgCredit">credit:
-                    {{(post$ | async).imgCredit}}</figcaption>
+                <img class="col-12" [src]="post.photo" alt="">
+                <figcaption class="figure-caption text-right" *ngIf="post.imgCredit">credit:
+                    {{post.imgCredit}}</figcaption>
             </figure>
             <hr>
             <!-- Post Content -->
@@ -32,45 +51,8 @@
             <hr>
 
         </div>
-        <!-- Sidebar Widgets Column -->
+        <!-- Sidebar-->
         <div class="col-md-4 mb-4 mt-4">
-
-            <!-- Categories Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                    <div class="row justify-content-around">
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-danger" [routerLink]="['/posts/angular']">Angular</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-success" [routerLink]="['/posts/spring']">Spring</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-info" [routerLink]="['/posts/devops']">Devops</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
