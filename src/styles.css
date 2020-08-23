@@ -47,3 +47,16 @@
   -webkit-transform:scale(1.1);
   transform:scale(1.1);
 }
+
+.animated-img {
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  transition:transform 0.25s ease;
+}
+
+.animated-img:hover {
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
