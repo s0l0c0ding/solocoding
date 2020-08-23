@@ -105,7 +105,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 In this class we can personalize the spring security configuration, for example by overriding the "configure(AuthenticationManagerBuilder auth)" method to configure the authentication process by deciding, how we retrieve our user; or by overriding the "configure(HttpSecurity http)" method to decide the authorization process.<br>
 
 Now if we run our test, it will fail; only the first one will pass as our application is currently secure. If you look at the console, you will notice that spring printed a default password for us (you ca use it to log in wiht a default username: user):
-```log
+```markup
 Using generated security password: 82359a43-539f-4fb8-b6bd-77530d9b83b4
 ```
 Next step is to write our controller class as follow, to implement our logic:

@@ -30,7 +30,7 @@ Briefly from the [official documentation](https://docs.docker.com/get-started/ov
 <br>
 In this post I am going to talk about layers and build stages to improve performance and caching.
 The docker image is composed of different layers, each statement in our docker file is a layer. Layers are precise because they can be re-used by multiple images saving disk space and reducing build time while maintaining their integrity. To dive more into the topic, you can see the [docs](https://docs.docker.com/storage/storagedriver/#images-and-layers).
-```dockerFile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} myApp.jar
@@ -53,7 +53,7 @@ Once the jar is unarchived (for example in target/dependency), we can see the fo
     └── springframework
 ```
 So we can make this docker file:
-```dockerFile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
@@ -90,7 +90,7 @@ The plugin use the [Paketo Buildpacks](https://paketo.io/) to build images, assu
 <br>
 
 The buildpack used for springboot apps can be found [here](https://github.com/paketo-buildpacks/spring-boot), as you can see in the buildpack.toml, the base image is an ubuntu bionic.
-```toml
+```markup
 [[stacks]]
 id = "io.buildpacks.stacks.bionic"
 ```
@@ -101,7 +101,7 @@ Running the above maven command on our project will creat an OCI image (The Open
 <br>
 The image produced will be named as our project's artifact, the tag will be our version and will be composed only from one layer. 
 An output example:
-```log
+```markup
 [INFO] --- spring-boot-maven-plugin:2.3.1.RELEASE:build-image (default-cli) @ famous ---
 [INFO] Building image 'docker.io/library/famous:0.0.2'
 [INFO] 
@@ -174,7 +174,7 @@ By default, the following layers are defined:
 <br>
 
 When we run the builder, we can see the layers created:
-```log
+```markup
 ...
 [INFO]     [creator]     Adding layer 'paketo-buildpacks/executable-jar:class-path'
 [INFO]     [creator]     Adding layer 'paketo-buildpacks/spring-boot:web-application-type'

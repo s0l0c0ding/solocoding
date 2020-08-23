@@ -85,7 +85,7 @@ class UnitestcontrollerApplicationTests {
 La nostra classe di test è annotata con [@ExtendWith (SpringExtension.class)](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/junit/jupiter/SpringExtension.html), in questo modo stiamo integrando "Spring TestContext Framework" in "JUnit 5", quindi stiamo usando l'ovveride di alcuni metodi junit come beforAll, afterAll, ecc.
 <br>
 Inoltre cosi facendo, possiamo usare l'annotazione [@MockBean](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/mock/mockito/MockBean.html) per aggiungere "mock" al nostro contesto e inoltre otteniamo anche l'accesso ad ApplicationContext associato al nostro test. Infatti se dessimo un'occhiata ai messaggi di log durante il test, potremmo notare che il nostro array contextInitializerClasses è vuoto:
-```log
+```markup
 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Storing ApplicationContext [1808884231] in cache under key [[MergedContextConfiguration@510f3d34 testClass = UnitestcontrollerApplicationTests, locations = '{}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', 
 ```
 Per ulteriori informazioni sulla memorizzazione nella cache del contesto dell'applicazione, potete dare un'occhiata ai documenti ufficiali [qui](https://docs.spring.io/spring/docs/5.1.2.RELEASE/spring-framework-reference/testing.html#testcontext-CTX-gestione-caching).  

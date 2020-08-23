@@ -103,7 +103,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 In questa classe possiamo personalizzare la configurazione di spring security, ad esempio facendo override del metodo "configure (AuthenticationManagerBuilder auth)" per configurare il processo di autenticazione decidendo come recuperare il nostro utente,o sovrascrivendo il metodo "configure (HttpSecurity http)" per decidere il processo di autorizzazione.<br>
 
 Ora se eseguissimo il nostro test, fallirebbe; passa solo il primo poiché la nostra applicazione è attualmente protetta. Se guardassi la console, noteresti che Spring ha stampato una password predefinita per noi (potete usarla per accedere, con un nome utente predefinito: user):
-```log
+```markup
 Using generated security password: 82359a43-539f-4fb8-b6bd-77530d9b83b4
 ```
 Il prossimo passo è scrivere la nostra classe di controller come segue, per implementare la nostra logica:

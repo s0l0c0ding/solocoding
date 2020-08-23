@@ -135,7 +135,7 @@ E infine viene definito il bean di "datasource". Per avere tutti i dati relativi
 postgre.getMappedPort(5432); //porta interna del container
 ```
 Nello script sql, sto creando una nuova tabella e inserendo alcuni dati:
-```sql
+```markup
 CREATE TABLE POST(
    ID INT PRIMARY KEY     NOT NULL,
    TITLE VARCHAR,
@@ -147,7 +147,7 @@ VALUES
 (2, 'Column2_Value', 'Column3_Value');
 ```
 Ora eseguendo il testo, possiamo vedere il seguente log:
-```log
+```markup
 2020-07-18 11:15:54.522  INFO 7325 --- [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
 2020-07-18 11:15:55.019  INFO 7325 --- [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker environment should have more than 2GB free disk space
 2020-07-18 11:15:55.066  INFO 7325 --- [           main] 🐳 [postgres:9.6.18-alpine]              : Creating container for image: postgres:9.6.18-alpine

@@ -229,7 +229,7 @@ browsers: ['Chrome'],
         flags: ['--no-sandbox']
       }
 ```
-- Build app angular: "buildiamo" la nostra app Angular, sto usando il flag state-json, perché è necessario per un plug-in Scully aggiunto;
+- Build app angular: "buildiamo" la nostra app Angular, sto usando il flag state-json, perché è necessario per un plug-in Scully ([scully-plugin-disable-angular](https://github.com/samvloeberghs/kwerri-oss/tree/master/projects/scully-plugin-disable-angular));
 - Build static scully: eseguire la build di scully con il flag scanRoutes per scoprire nuovi post/file di markdown.
 <br>
 <br>

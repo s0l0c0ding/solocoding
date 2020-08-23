@@ -2,7 +2,7 @@
 published: true
 title: Setting up the title and the meta tags in Angular/Scully applications
 description: Angular application can't be bootstrapped on the entire HTML document,it is not possible to use the data binding technique for a property like the title for instance.
-date: 2020-06-01
+date: 2020-08-23
 author: Bassem
 slug: eng_angular_title_meta_tags_Angular_Scully
 photo: assets/stock/social.webp
@@ -30,7 +30,7 @@ In this article, I am going to share how I reached this target, in my blog based
 **Route's data**
 <br>
 In the following code snippet, we can see how we add the data attribute to our Routes array in the AppRoutingModule:
-```TypeScript
+```typescript
 const routes: Routes = [
   { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), data:{'title': "soloCoding"} },
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule), data:{'title': "About me"} },
@@ -40,7 +40,7 @@ const routes: Routes = [
 **Custom service SocialTagsService**
 <br>
 And here how we are going to update our title "dynamically": 
-```TypeScript
+```typescript
 @Injectable({
   providedIn: 'root'
 })
@@ -64,19 +64,21 @@ setTitleAndTags() {
         return route;
       }),
       filter(route => route.outlet === 'primary')
-    ).subscribe((route: ActivatedRoute) => {
+    ).subscribe(() => {
       this.scully.getCurrent().subscribe(
         link => {
             if (link.title) {
             this.titleService.setTitle(link.title);
              } else {
-            const title: string = route.snapshot.data['title'];
+            this.titleService.setTitle(this.data.title);
             this.titleService.setTitle(title);
             }
         });
     });
   }
 }
+
+private get data() { return this.activatedRoute.snapshot.firstChild.data; }
 ```
 As you can see in the above code, we need to import Router and ActivatedRoute so that we can subscribe to the router events and change the title using the Title service, also as I am using modules in my app, we need to have the while loop to find the last child.
 <br>
@@ -93,13 +95,13 @@ checks for the Twitter-specific property, and if not present, falls
 back to the supported Open Graph property."  
 
 But the card tag is needed: 
-```Html
+```html
 <meta name="twitter:card" content="summary" />
 ```
 More information can be found on [Twitter docs](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started).  
 <br>
 For the purpose of this article, we’ll focus mainly on image, title, and description. So in the head section in our index.html we are going to add the following meta tags:
-```Html
+```html
   <title></title>
   <meta name="og:title" property="og:title" content="">
   <meta name="og:description" property="og:description" content="">
@@ -107,7 +109,7 @@ For the purpose of this article, we’ll focus mainly on image, title, and descr
 ```
 **Update SocialTagsService**  
 Now we return to our typeScript file, to modify the service, first we inject the Meta service and the we update the tags in the respective section:
-```TypeScript
+```typescript
 export class SocialTagsService {
 
   public constructor(private titleService: Title,
@@ -116,16 +118,16 @@ export class SocialTagsService {
     private scully: ScullyRoutesService,
     private meta: Meta) {}
     // skipping some code
-    .subscribe((route: ActivatedRoute) => {
+    .subscribe(() => {
       this.scully.getCurrent().subscribe(
         link => {
-          if (link.title) {
-            this.titleService.setTitle(link.title);
+          if (link?.title) {
+            this.titleService.setTitle(this.data.title);
             this.meta.updateTag({ name: 'og:title', property: 'og:title', content: link.title });
             this.meta.updateTag({ name: 'og:description', property: 'og:description', content: link.description});
             this.meta.updateTag({ name: 'og:image', content: this.urlPrefix+'/'+link.photo });
           } else {
-            const title: string = route.snapshot.data['title'];
+            this.titleService.setTitle(this.data.title);
             this.titleService.setTitle(title);
             this.meta.updateTag({ name: 'og:title', content: title });
             this.meta.updateTag({ name: 'og:description', content: this.tagDescription });
@@ -139,7 +141,7 @@ One thing to remind is that, the Meta service provides also remove(), add() and 
 <br>
 **Injecting SocialTagsService in AppComponent**  
 Final step is to use our service in the app.component.ts:
-```TypeScript
+```typescript
 export class AppComponent {
 
   public constructor(private tagsService: SocialTagsService) {

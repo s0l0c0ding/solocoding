@@ -29,7 +29,7 @@ Bravamente dalla [documentazione ufficiale](https://docs.docker.com/get-started/
 **Strati**
 <br>
 In questo post vediamo  gli strati di una immagine  e gli "build stage" per migliorare le prestazioni e il cache del processo di build. L'immagine docker è composta da diversi livelli/strati, ogni istruzione nel nostro docker file è un livello. I livelli sono precisi perché possono essere riutilizzati da più immagini risparmiando spazio su disco e riducendo i tempi di costruzione mantenendo la loro integrità. Per approfondire l'argomento, potete vedere la [documnetazione](https://docs.docker.com/storage/storagedriver/#images-and-layers).
-```dockerFile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} myApp.jar
@@ -52,7 +52,7 @@ Una volta scompattato il jar  (ad esempio in target/dependency), possiamo vedere
     └── springframework
 ```
 Di conseguenza possiamo creare questo  docker file:
-```dockerFile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
@@ -89,7 +89,7 @@ Il plugin usa [Paketo Buildpacks](https://paketo.io/) per creare immagini, garan
 <br>
 
 È possibile trovare il buildpack utilizzato per le app di springboot [qua](https://github.com/paketo-buildpacks/spring-boot),come potete vedere in buildpack.toml, l'immagine di base è un ubuntu bionic.
-```toml
+```markup
 [[stacks]]
 id = "io.buildpacks.stacks.bionic"
 ```
@@ -99,7 +99,7 @@ mvn spring-boot:build-image
 L'esecuzione del comando sopra citato sul nostro progetto crea un'immagine OCI (il formato Open Container Initiative; storicamente, ogni Container Engine aveva il suo formato di immagine del contenitore. Docker, LXD e RKT avevano tutti i loro formati di immagine.) Usando Cloud Native Buildpacks. Il plugin comunica con il docker installato localmente.
 <br>
 L'immagine prodotta nominata come il nome del artifact del nostro progetto, il tag è la nostra versione ed è composta da un solo livello. Un esempio di output:
-```log
+```markup
 [INFO] --- spring-boot-maven-plugin:2.3.1.RELEASE:build-image (default-cli) @ famous ---
 [INFO] Building image 'docker.io/library/famous:0.0.2'
 [INFO] 
@@ -172,7 +172,7 @@ Per default, sono definiti i seguenti livelli:
 <br>
 
 Quando eseguiamo nuovmente il builder, vediamo i segeunti strati: 
-```log
+```markup
 ...
 [INFO]     [creator]     Adding layer 'paketo-buildpacks/executable-jar:class-path'
 [INFO]     [creator]     Adding layer 'paketo-buildpacks/spring-boot:web-application-type'

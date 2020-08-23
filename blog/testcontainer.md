@@ -135,7 +135,7 @@ And finally the datasource bean is defined. To have all the data related to the 
 postgre.getMappedPort(5432); //internal container port
 ```
 In the sql script, I am making a new table and inserting some data:
-```sql
+```markup
 CREATE TABLE POST(
    ID INT PRIMARY KEY     NOT NULL,
    TITLE VARCHAR,
@@ -147,7 +147,7 @@ VALUES
 (2, 'Column2_Value', 'Column3_Value');
 ```
 Now when run the test, we can see the following log:
-```log
+```markup
 2020-07-18 11:15:54.522  INFO 7325 --- [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
 2020-07-18 11:15:55.019  INFO 7325 --- [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker environment should have more than 2GB free disk space
 2020-07-18 11:15:55.066  INFO 7325 --- [           main] 🐳 [postgres:9.6.18-alpine]              : Creating container for image: postgres:9.6.18-alpine
