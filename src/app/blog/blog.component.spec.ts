@@ -1,19 +1,30 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BlogComponent } from './blog.component';
+import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { of } from 'rxjs';
 
-import { BlogComponent } from './Blog.component';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
   let fixture: ComponentFixture<BlogComponent>;
+  let getScullySpy: Partial<ScullyRoutesService>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BlogComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
+    const link = {
+      keywords:['angular']
+    }
+
+    const scully = jasmine.createSpyObj('ScullyRoutesService', ['getCurrent']);
+    getScullySpy = scully.getCurrent.and.returnValue(of(link));
+
+    TestBed.configureTestingModule({
+      declarations: [BlogComponent],
+      providers: [
+        { provide: ScullyRoutesService, useValue: scully }
+      ]
+    });
+
     fixture = TestBed.createComponent(BlogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

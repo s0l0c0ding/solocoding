@@ -1,25 +1,35 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
 
 on:
   push:
-    branches: [ tbd ]
+    branches: [ dev, master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
     - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
     - name: Cache node modules
       uses: actions/cache@v1
       env:
         cache-name: cache-node-modules
       with:
-        path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: ~/.npm
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -27,19 +37,10 @@ jobs:
           ${{ runner.os }}-
     - name: Install Dependencies
       run: sudo npm install
-    - name: Install cli
-      run: sudo npm install -g @angular/cli
+    - name: Test
+      run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
     - name: build app angular
       run: |
-        ng build --prod --base-href /solocoding-blog/
-        cp dist/soloCoding-blog/index.html dist/soloCoding-blog/404.html
+        npm run build -- --prod --stats-json
     - name: build static scully
       run: npm run scully -- --scanRoutes --showGuessError
-    - name: Commit work
-      run: |
-        cp -RT dist/static/ docs/
-        git config --global user.name "s0l0c0ding"
-        git config --global user.email "s0l0c0ding@users.noreply.github.com"
-        git add .
-        git commit -m"workflow"
-        git push

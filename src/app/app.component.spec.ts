@@ -1,35 +1,47 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SocialTagsService } from './services/social-tags.service';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import {RouterTestingModule} from '@angular/router/testing' 
+import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  let comp: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let tagServiceStub: Partial<SocialTagsService>;
+
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        imports: [ 
+          RouterTestingModule,
+          RouterModule
+        ],
+        declarations: [
+          AppComponent,
+          FooterComponent,
+          HeaderComponent,
+        ],
+      }).compileComponents();
+    }));
+
+  beforeEach(() => {
+    tagServiceStub = {
+      setTitleAndTags: () => { }
+    };
+
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+      declarations: [AppComponent],
+      providers: [{ provide: SocialTagsService, useValue: tagServiceStub }],
+    });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    fixture = TestBed.createComponent(AppComponent);
+    comp = fixture.componentInstance;
+
   });
 
-  it(`should have as title 'soloCoding'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('soloCoding');
+  it('should create', () => {
+    expect(comp).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('soloCoding-blog app is running!');
-  });
 });
