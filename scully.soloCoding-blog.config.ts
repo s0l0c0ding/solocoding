@@ -1,6 +1,7 @@
 import { setPluginConfig, ScullyConfig } from '@scullyio/scully';
 import './plugins/postCategoryPlugin.js';
 import { DisableAngular } from 'scully-plugin-disable-angular';
+import 'prismjs/components/prism-java.js';
 
 const postRenderers = [DisableAngular];
 setPluginConfig('md', { enableSyntaxHighlighting: true });

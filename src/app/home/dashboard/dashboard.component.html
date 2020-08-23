@@ -1,48 +1,25 @@
 <div class="container">
      <!-- Categories Widget -->
-    <div class="row align-content-end" *ngIf="keyword !=='it'">
-        <div class="col-lg-4 col-md-4 mb-4 ml-auto">
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                    <div class="row justify-content-around">
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-danger" [routerLink]="['/posts/angular']">Angular</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-success" [routerLink]="['/posts/spring']">Spring</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-info" [routerLink]="['/posts/devops']">Devops</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-1">
-                            <ul class="list-unstyled mt-1">
-                                <li>
-                                    <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="row justify-content-center" *ngIf="keyword !=='it'">
+            <ul class="nav mb-5">
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-danger" [routerLink]="['/posts/angular']">Angular</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-info" [routerLink]="['/posts/devops']">Devops</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-success" [routerLink]="['/posts/spring']">Spring</a>
+                </li>
+            </ul>
     </div>
     <!-- aeticles -->
     <div class="row text-center">
         <ng-container *ngFor="let link of (linksFiltred$ |async).sort(sortDateFunc); let last = last">
-            <div class="col-lg-3 col-md-6 mb-4" *ngIf="currentTag(link)">
+            <div class="col-lg-3 col-md-6 mb-4 animateScale" *ngIf="currentTag(link)">
                 <app-post [link]=link [photo]=link.photo></app-post>
             </div>
         </ng-container>

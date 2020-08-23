@@ -13,7 +13,8 @@ export class SocialTagsService {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private scully: ScullyRoutesService,
-    private meta: Meta) {}
+    private meta: Meta) {
+    }
 
   readonly tagDescription: string = 'A blog about programming and software development, writing about Spring, Quarkus, java, Angular, DevOps, Docker and kubernetes';
   readonly tagImage: string = 'assets/logo.png';
@@ -32,7 +33,7 @@ export class SocialTagsService {
         return route;
       }),
       filter(route => route.outlet === 'primary')
-    ).subscribe((route: ActivatedRoute) => {
+    ).subscribe(() => {
       this.scully.getCurrent().subscribe(
         link => {
           this.meta.updateTag({ name: 'twitter:url', content: this.urlPrefix + this.router.url });
@@ -40,7 +41,7 @@ export class SocialTagsService {
           this.meta.updateTag({ name: 'og:site_name', property: 'og:site_name', content: this.siteName});
           this.meta.updateTag({ name: 'twitter:creator', content: this.userTwitter});
           this.meta.updateTag({ name: 'twitter:site', content: this.userTwitter});
-          if (link.title) {
+          if (link?.title) {
             this.titleService.setTitle(link.title);
             this.meta.updateTag({ name: 'description', content: link.description });
             this.meta.updateTag({ name: 'image', content: this.urlPrefix+'/'+link.photo });
@@ -53,19 +54,21 @@ export class SocialTagsService {
             this.meta.updateTag({ name: 'twitter:description', content: (link.description as string).substring(0, 123)});
             this.meta.updateTag({ name: 'twitter:image', content: this.urlPrefix+'/'+link.photo });
           } else {
-            const title: string = route.snapshot.data['title'];
-            this.titleService.setTitle(title);
-            this.meta.updateTag({ name: 'description', content: this.tagDescription });
+            this.titleService.setTitle(this.data.title);
+            const description = this.data.desc ? this.data.desc : this.tagDescription;
+            this.meta.updateTag({ name: 'description', content: description });
             this.meta.updateTag({ name: 'image', content: this.urlPrefix+'/'+this.tagImage });
-            this.meta.updateTag({ name: 'og:title', content: title });
-            this.meta.updateTag({ name: 'og:description', content: this.tagDescription });
+            this.meta.updateTag({ name: 'og:title', content: this.data.title });
+            this.meta.updateTag({ name: 'og:description', content: description });
             this.meta.updateTag({ name: 'og:type', content: 'website' });
             this.meta.updateTag({ name: 'og:image', content: this.urlPrefix+'/'+this.tagImage });
-            this.meta.updateTag({ name: 'twitter:title', content: title });
-            this.meta.updateTag({ name: 'twitter:description', content: this.tagDescription.substring(0, 123) });
+            this.meta.updateTag({ name: 'twitter:title', content: this.data.title });
+            this.meta.updateTag({ name: 'twitter:description', content: description.substring(0, 123) });
             this.meta.updateTag({ name: 'twitter:image', content: this.urlPrefix+'/'+this.tagImage });
           }
         });
     });
   }
+
+  private get data() { return this.activatedRoute.snapshot.firstChild.data; }
 }

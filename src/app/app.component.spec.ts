@@ -1,15 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { SocialTagsService } from './services/social-tags.service';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import {RouterTestingModule} from '@angular/router/testing' 
+import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let tagServiceStub: Partial<SocialTagsService>;
 
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        imports: [ 
+          RouterTestingModule,
+          RouterModule
+        ],
+        declarations: [
+          AppComponent,
+          FooterComponent,
+          HeaderComponent,
+        ],
+      }).compileComponents();
+    }));
 
   beforeEach(() => {
-    // stub tag for test purposes
     tagServiceStub = {
       setTitleAndTags: () => { }
     };
@@ -21,9 +37,6 @@ describe('AppComponent', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     comp = fixture.componentInstance;
-
-    // UserService from the root injector
-    // userService = TestBed.inject(SocialTagsService);
 
   });
 
