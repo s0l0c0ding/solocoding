@@ -1,20 +1,42 @@
 <div class="container">
      <!-- Categories Widget -->
-    <div class="row justify-content-center" *ngIf="keyword !=='it'">
-            <ul class="nav mb-5">
+    <div class="row justify-content-center">
+        <ng-container [ngSwitch] = "lang">
+            <ul class="nav mb-5" *ngSwitchCase = "'en'">
                 <li class="nav-item mr-3">
                     <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="btn btn-outline-danger" [routerLink]="['/posts/angular']">Angular</a>
+                    <a class="btn btn-outline-danger" [routerLink]="['/posts','angular']">Angular</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="btn btn-outline-info" [routerLink]="['/posts/devops']">Devops</a>
+                    <a class="btn btn-outline-info" [routerLink]="['/posts','devops']">Devops</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="btn btn-outline-success" [routerLink]="['/posts/spring']">Spring</a>
+                    <a class="btn btn-outline-success" [routerLink]="['/posts','spring']">Spring</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-light" [routerLink]="['/posts','it']">🇮🇹</a>
                 </li>
             </ul>
+            <ul class="nav mb-5" *ngSwitchCase = "'it'">
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-secondary" [routerLink]="['/posts','it']">Tutti</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-danger" [routerLink]="['/posts','it_angular']">Angular</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-info" [routerLink]="['/posts','it_devops']">Devops</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-success" [routerLink]="['/posts','it_spring']">Spring</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="btn btn-outline-light" [routerLink]="['/posts']">🇬🇧</a>
+                </li>
+            </ul>
+        </ng-container>
     </div>
     <!-- aeticles -->
     <div class="row text-center">
