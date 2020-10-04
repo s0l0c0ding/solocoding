@@ -2,37 +2,37 @@
      <!-- Categories Widget -->
     <div class="row justify-content-center">
         <ng-container [ngSwitch] = "lang">
-            <ul class="nav mb-5" *ngSwitchCase = "'en'">
-                <li class="nav-item mr-3">
+            <ul class="nav mb-2 justify-content-center " *ngSwitchCase = "'en'">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-danger" [routerLink]="['/posts','angular']">Angular</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-info" [routerLink]="['/posts','devops']">Devops</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-success" [routerLink]="['/posts','spring']">Spring</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-light" [routerLink]="['/posts','it']">🇮🇹</a>
                 </li>
             </ul>
             <ul class="nav mb-5" *ngSwitchCase = "'it'">
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-secondary" [routerLink]="['/posts','it']">Tutti</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-danger" [routerLink]="['/posts','it_angular']">Angular</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-info" [routerLink]="['/posts','it_devops']">Devops</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-success" [routerLink]="['/posts','it_spring']">Spring</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-light" [routerLink]="['/posts']">🇬🇧</a>
                 </li>
             </ul>
