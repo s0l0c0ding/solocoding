@@ -5,8 +5,8 @@ description: Qualche volta, abbiamo il bisogno di effettuare certe operazioni pr
 date: 2020-10-27
 author: Bassem
 slug: it_spring_entity_Callbacks_mongodb
-photo: assets/stock/listener.webp
-imgCredit: Bernin Uben on Unsplash
+photo: assets/stock/mongo_spring.webp
+imgCredit:
 keywords:
   - spring
   - springDataJpa
