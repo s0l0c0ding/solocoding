@@ -14,7 +14,7 @@
             </div>
             <div class="divider-custom-line"></div>
         </div>
-        <h4 class="justify-content-center text-secondary">Here you can find my most recent courses, if you have any particular need just get in touch<a class="text-info" [routerLink]="['/about']"> 📨</a> .</h4>
+        <h4 class="justify-content-center text-secondary">Here you can find my most recent courses, if you have any particular need just get in touch<a class="text-info" [routerLink]="['/about']"> here 📨</a> .</h4>
     </div>
 
     <div class="card-deck row justify-content-center mt-5">
@@ -43,8 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer row no-gutters">
-                <small class="text-muted col-md-9">Last updated on {{course.lastUpdate | date:'dd/LL'}}</small>
+            <div class="card-footer row no-gutters justify-content-end">
                 <a class="btn btn-outline-primary col-md-3" href="{{course.url}}" target="_blank" rel="noopener noreferrer">Check it</a>
             </div>
         </div>
