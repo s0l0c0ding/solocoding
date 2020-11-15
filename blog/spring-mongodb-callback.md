@@ -1,6 +1,6 @@
 ---
 published: true
-title: Implement an entity Callbacks wiht SpringBoot and MongoDB
+title: Implement an entity Callbacks with SpringBoot and MongoDB
 description: Some times we need to carry out certain actions before sending a record to the database, as we know for sql databases Spring data provides some life-cycle callback methods like @PostPersist..
 date: 2020-10-27
 author: Bassem
