@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { SocialTagsService } from './services/social-tags.service';
 import { FooterComponent } from './footer/footer.component';
@@ -11,7 +11,7 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let tagServiceStub: Partial<SocialTagsService>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [ 
           RouterTestingModule,
