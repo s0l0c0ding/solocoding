@@ -1,7 +1,7 @@
 ---
 published: true
 title: Simple template for CI/CD operations on Gitlab
-description:In this post, we are going to take a look at Gitlab CI/C pipeline. We will make a template that could be used for ..
+description: In this post, we are going to take a look at Gitlab CI/C pipeline. We will make a template that could be used for ..
 date: 2021-01-30
 author: Bassem
 slug: eng_devops_ci_cd_pipeline-gitlap
