@@ -12,6 +12,7 @@ keywords:
   - scully
   - devops
 language: en
+tweetId: '1295437685411151875'
 output:
   html_document:
     css: post-details.component.css

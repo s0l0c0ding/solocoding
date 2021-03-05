@@ -1,18 +1,19 @@
 ---
-title: Spring post
-description: Here we will write about the backend end framework, Spring. 
+title: 'Spring post'
+description: 'Here we will write about the backend end framework, Spring.'
 published: false
-date: 2020-04-10
-author: Bassem 
-slug: eng_spring_spring posts
+date: 2020-04-10T00:00:00.000Z
+author: Bassem
+slug: 'eng_spring_spring posts'
 photo: assets/stock/springLogo.png
 imgCredit: spring.io
 keywords:
-  - spring
+    - spring
 language: en
 output:
-  html_document:
-    css: post-details.component.css
+    html_document: {css: post-details.component.css}
+slugs:
+    - ___UNPUBLISHED___klwfdukj_cv6pIsxyrzDCuXp3aQO9tS585VFMT2Ru
 ---
 
 ## Spring

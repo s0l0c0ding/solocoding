@@ -1,18 +1,19 @@
 ---
-title: Devops post
-description: Here we will write some devops articles. 
+title: 'Devops post'
+description: 'Here we will write some devops articles.'
 published: false
-date: 2020-04-26
-author: Bassem 
+date: 2020-04-26T00:00:00.000Z
+author: Bassem
 slug: eng_devops_devopsposts
 photo: assets/stock/git.webp
-imgCredit: Yancy Min on Unsplash
+imgCredit: 'Yancy Min on Unsplash'
 keywords:
-  - devops
+    - devops
 language: en
 output:
-  html_document:
-    css: post-details.component.css
+    html_document: {css: post-details.component.css}
+slugs:
+    - ___UNPUBLISHED___klwfdul2_ynGuN8y3EBNboPTBWP2ELcCRdUJYbCVg
 ---
 
 ## Devops

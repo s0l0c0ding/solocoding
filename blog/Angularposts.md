@@ -1,19 +1,21 @@
 ---
-title: Angular post
-description: Here we will write about the front end framework, Angular. 
+title: 'Angular post'
+description: 'Here we will write about the front end framework, Angular.'
 published: false
-date: 2020-04-18
-author: Bassem 
-slug: eng_angular_Angular posts
+date: 2020-04-18T00:00:00.000Z
+author: Bassem
+slug: 'eng_angular_Angular posts'
 photo: assets/stock/angularLogo.webp
 imgCredit: angular.io
 keywords:
-  - angular
+    - angular
 language: en
 output:
-  html_document:
-    css: post-details.component.css
+    html_document: {css: post-details.component.css}
+slugs:
+    - ___UNPUBLISHED___klwfdukb_gn8IaitKxUgLpifCElsjBjwFLC4d4lHu
 ---
+
 ## Angular
 Under this tag, i  will write about the front end framework, Angular. 
 Meanwhile you can go the [official docs](https://angular.io/), to dive in. 

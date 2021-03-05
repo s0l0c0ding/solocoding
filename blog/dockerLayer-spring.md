@@ -12,6 +12,7 @@ keywords:
   - spring
   - docker
 language: en
+tweetId: '1279780867032915969'
 output:
   html_document:
     css: post-details.component.css
