@@ -10,6 +10,7 @@ imgCredit: Gitlab
 keywords:
   - devops
 language: en
+tweetId: '1368476079074205697'
 output:
   html_document:
     css: post-details.component.css
