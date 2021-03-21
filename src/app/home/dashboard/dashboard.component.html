@@ -16,7 +16,7 @@
                     <a class="btn btn-outline-success" [routerLink]="['/posts','spring']">Spring</a>
                 </li>
                 <li class="nav-item mr-4 mb-3">
-                    <a class="btn btn-outline-light" [routerLink]="['/posts','it']">🇮🇹</a>
+                    <a class="btn btn-outline-light" [routerLink]="['/posts','it']" title="Switch to italian posts">🇮🇹</a>
                 </li>
             </ul>
             <ul class="nav mb-5" *ngSwitchCase = "'it'">
@@ -33,7 +33,7 @@
                     <a class="btn btn-outline-success" [routerLink]="['/posts','it_spring']">Spring</a>
                 </li>
                 <li class="nav-item mr-4 mb-3">
-                    <a class="btn btn-outline-light" [routerLink]="['/posts']">🇬🇧</a>
+                    <a class="btn btn-outline-light" [routerLink]="['/posts']" title="Switch to english posts">🇬🇧</a>
                 </li>
             </ul>
         </ng-container>
