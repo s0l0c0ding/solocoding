@@ -11,6 +11,7 @@ keywords:
   - spring
   - programming
 language: en
+tweetId: '1373740886669033474'
 output:
   html_document:
     css: post-details.component.css
@@ -26,7 +27,7 @@ An aspect can be for example logging, transaction, etc.
 
 ### What are we going to build?
 
-We will build a component to be used for logging at the controller level, in particularly we are going to log each request, response and any exception raised during the execution of any endpoint.
+We will build a component to be used for logging at the controller level, in particularly we are going to log each request, response and any exception raised during the execution of any endpoint (worth mentioning, if you want to log only the response and request of endpoints, it's recommended to use Spring AbstractRequestLoggingFilter).
 
 ### Some terminology and annotations
 

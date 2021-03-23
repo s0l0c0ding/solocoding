@@ -11,6 +11,7 @@ keywords:
   - spring
   - programming
 language: it
+tweetId: '1374400649811558412'
 output:
   html_document:
     css: post-details.component.css
@@ -26,7 +27,7 @@ Un aspetto potrebbe essere per esempio attività di logging o transazione ecc.
 
 ### Cosa andiamo a costruire?
 
-Costruiremo un componente da utilizzare per  centralizzare il logging, in particolare registreremo ogni richiesta, risposta e ogni eccezione sollevata durante l'esecuzione di qualsiasi endpoint.
+Costruiremo un componente da utilizzare per  centralizzare il logging, in particolare registreremo ogni richiesta, risposta e ogni eccezione sollevata durante l'esecuzione di qualsiasi endpoint(da notare, se si volesse loggare solo la risposta e la richiesta degli endpoint, si consiglia di utilizzare Spring AbstractRequestLoggingFilter).
 
 ### Un po' di terminologia e annotazioni
 
