@@ -7,6 +7,7 @@ author: Bassem
 slug: eng_quarkus_intercept_requests
 photo: assets/stock/filtersQuarkus.webp
 imgCredit:
+tweetId: '1417870556729327619'
 keywords:
   - quarkus
   - programming

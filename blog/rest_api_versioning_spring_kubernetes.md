@@ -7,6 +7,7 @@ author: Bassem
 slug: eng_rest_api_versioning_spring_kubernetes_ambassador
 photo: assets/stock/apiversioning.webp
 imgCredit:
+tweetId: '1393331774323834886'
 keywords:
   - spring
   - devops
