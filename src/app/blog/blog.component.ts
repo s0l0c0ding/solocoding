@@ -19,9 +19,10 @@ export class BlogComponent implements OnDestroy {
 
   constructor(private scully: ScullyRoutesService) {
   this.sub = this.scully.getCurrent().subscribe( temp => this.post = temp);
-  this.badge.set('angular', 'badge badge-primary');
+  this.badge.set('angular', 'badge badge-danger');
   this.badge.set('spring', 'badge badge-success');
   this.badge.set('devops', 'badge badge-info');
+  this.badge.set('quarkus', 'badge badge-primary');
 
   }
 
