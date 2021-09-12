@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -41,6 +41,6 @@ jobs:
       run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
     - name: build app angular
       run: |
-        npm run build -- --prod --stats-json
+        npm run build -- --configuration production --stats-json
     - name: build static scully
       run: npm run scully -- --scanRoutes --showGuessError
