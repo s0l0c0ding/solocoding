@@ -11,7 +11,6 @@ keywords:
   - spring
   - programming
 language: en
-tweetId: 
 output:
   html_document:
     css: post-details.component.css
