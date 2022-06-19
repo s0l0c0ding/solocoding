@@ -1,7 +1,7 @@
 ---
 published: true
 title: Annotazioni custom con Spring
-description: In questo post vediamo la differenza tra le annotazioni `@Repository`, `@Service`, `@Configuration` e `@Controller` e come crearne una personalizzata ...
+description: In questo post vediamo la differenza tra le annotazioni @Repository, @Service, @Configuration e @Controller e come crearne una personalizzata ...
 date: 2022-06-06
 author: Bassem
 slug: it_spring_custom_annotaions
@@ -11,6 +11,7 @@ keywords:
   - spring
   - programming
 language: it
+tweetId: '1535268527380340736'
 output:
   html_document:
     css: post-details.component.css
