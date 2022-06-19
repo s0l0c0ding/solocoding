@@ -7,6 +7,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  APPLICATION_FILE: src/environments/environment.prod.ts
+
 jobs:
   build:
 
@@ -39,6 +42,11 @@ jobs:
       run: sudo npm install
     - name: Test
       run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+    - name: app-prop
+      env:
+        APP_PROP: ${{ secrets.APP_PROP }}
+      run: |
+        echo "$APP_PROP" | base64 -d > "$APPLICATION_FILE"
     - name: build app angular
       run: |
         npm run build -- --configuration production --stats-json
