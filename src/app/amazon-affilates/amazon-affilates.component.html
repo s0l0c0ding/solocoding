@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row ml-1">
+        <ng-container [ngSwitch] = "post.language">
+            <ng-container *ngSwitchDefault>
+                You can support this blog by browsing the Amazon/Kindle  books through the following affiliate links 👇
+            </ng-container>
+            <ng-container *ngSwitchCase="'it'">
+                Puoi supportare questo blog sfogliando i libri Amazon/Kindle tramite i seguenti link sponsorizzati 👇
+            </ng-container>
+          </ng-container>
+    </div>
+    <div class="row ml-1">
+        <div class="col-xs-1 mr-2"  *ngFor="let tag of post.keywords">
+            <ul class="list-unstyled mt-1">
+                <li>
+                    <a target="_blank" *ngIf="badge.get(tag)" [ngClass]="badge.get(tag)"
+                        [href]="amazonLinks[tag]">
+                        {{tag}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-1 mr-2">
+            <ul class="list-unstyled mt-1">
+                <li>
+                    <a class="badge badge-secondary" target="_blank" [href]="amazonLinks['all']">All</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
