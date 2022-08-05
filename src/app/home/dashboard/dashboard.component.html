@@ -1,7 +1,7 @@
 <div class="container">
      <!-- Categories Widget -->
     <div class="row justify-content-center">
-        <ng-container [ngSwitch] = "lang">
+        <ng-container [ngSwitch]="lang">
             <ul class="nav mb-2 justify-content-center " *ngSwitchCase = "'en'">
                 <li class="nav-item mr-4 mb-3">
                     <a class="btn btn-outline-secondary" [routerLink]="['/posts']">All</a>
