@@ -13,7 +13,6 @@ keywords:
   - security
   - quarkus
 language: it
-tweetId: ''
 output:
   html_document:
     css: post-details.component.css
