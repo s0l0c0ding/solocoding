@@ -4,6 +4,7 @@ import './plugins/postCategoryPlugin.js';//extra routes
 import 'prismjs/components/prism-java.js';
 import 'prismjs/components/prism-yaml.js';
 import 'prismjs/components/prism-docker.min.js';
+import '@scullyio/scully-plugin-puppeteer';
 
 
 const EMBED_TWEET_PLUGIN = 'embeddedTweetPlugin';

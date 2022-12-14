@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
 import { Observable} from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable} from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   
   links$ :Observable<any>;
 
@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
     this.links$  = scully.available$;
   }
 
-  ngOnInit(): void {
-  }
 
   currentTag(link: any): boolean {
     if (link.keywords) {
