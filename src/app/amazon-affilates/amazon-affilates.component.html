@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="post">
     <div class="row ml-1">
-        <ng-container [ngSwitch] = "post.language">
+        <ng-container [ngSwitch]="post.language">
             <ng-container *ngSwitchDefault>
                 You can support this blog by browsing the Amazon/Kindle  books through the following affiliate links 👇
             </ng-container>
@@ -10,7 +10,7 @@
           </ng-container>
     </div>
     <div class="row ml-1">
-        <div class="col-xs-1 mr-2"  *ngFor="let tag of post.keywords">
+        <div class="col-xs-1 mr-2" *ngFor="let tag of post.keywords">
             <ul class="list-unstyled mt-1">
                 <li>
                     <a target="_blank" *ngIf="badge.get(tag)" [ngClass]="badge.get(tag)"
