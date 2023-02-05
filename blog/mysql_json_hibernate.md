@@ -12,6 +12,7 @@ keywords:
   - hibernate
   - mysql
 language: en
+tweetId: '1611282418253578241'
 output:
   html_document:
     css: post-details.component.css
