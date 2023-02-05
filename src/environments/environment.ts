@@ -14,7 +14,8 @@ export const environment = {
     'quarkus': 'https://www.amazon.com/gp/search?ie=UTF8&tag=solocoding1-20&linkCode=ur2&linkId=91324d39a17804036568d4e450c285a6&camp=1789&creative=9325&index=digital-text&keywords=quarkus',
     'all': 'https://www.amazon.com/gp/search?ie=UTF8&tag=solocoding1-20&linkCode=ur2&linkId=9aab3cfad9cc70da6c340714bb23ab43&camp=1789&creative=9325&index=digital-text&keywords=software programming'
 
-  }
+  },
+  isAmazonLinksEnabled: false
 };
 
 /*
