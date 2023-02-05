@@ -30,7 +30,7 @@
     "@scullyio/ng-lib": "2.1.41",
     "@scullyio/scully": "2.1.41",
     "@scullyio/scully-plugin-puppeteer": "^2.1.41",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "4.6.2",
     "guess-parser": "^0.4.22",
     "jsdom": "^16.4.0",
     "rxjs": "7.6.0",

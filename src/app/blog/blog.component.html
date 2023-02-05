@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <app-amazon-affilates class="row" [post]="post" [badge]="badge"></app-amazon-affilates>
+    <app-amazon-affilates *ngIf="isAmazonLinksEnabled" class="row" [post]="post" [badge]="badge"></app-amazon-affilates>
 
     
     <div class="row" *ngIf="post.tweetId">
