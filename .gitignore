@@ -48,3 +48,9 @@ Thumbs.db
 scully.log
 .scully/*
 src/assets/scully-routes.json
+
+scullyStats.json
+/scully/**/*.js
+/scully/**/*.js.map
+/scully/**/*.d.ts
+scully.soloCoding-blog.config.js

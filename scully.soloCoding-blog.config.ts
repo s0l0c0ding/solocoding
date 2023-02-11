@@ -1,22 +1,23 @@
-import { setPluginConfig, ScullyConfig, registerPlugin, httpGetJson } from '@scullyio/scully';
+import { setPluginConfig, ScullyConfig, registerPlugin, httpGetJson, HandledRoute } from '@scullyio/scully';
 import { DisableAngular } from 'scully-plugin-disable-angular';
 import './plugins/postCategoryPlugin.js';//extra routes
 import 'prismjs/components/prism-java.js';
 import 'prismjs/components/prism-yaml.js';
 import 'prismjs/components/prism-docker.min.js';
+import  'prismjs/components/prism-bash'
 import '@scullyio/scully-plugin-puppeteer';
 
-
 const EMBED_TWEET_PLUGIN = 'embeddedTweetPlugin';
+const EMBED_ADSENSE_PLUGIN = 'embedAdSensePlugin';
 
-async function embeddedTweetPlugin(html: string, route: any): Promise<string> {
+async function embeddedTweetPlugin(html: string, route: HandledRoute): Promise<string> {
   const skip = !(route.data?.published && Object.keys(route.data).includes('tweetId'));
   
   if (skip) {
     return Promise.resolve(html);
   }
 
-  const id = route.data['tweetId'];
+  const id = route.data?.tweetId;
   const twitterScript = '<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
   const headSplitter = '</head>';
   const [begin, end] = html.split(headSplitter);
@@ -36,11 +37,29 @@ function sanatizWidget(rawWidget: string): string {
   return rawWidget.replace('\\n', '').replace('\\u003C', '<').replace('\\u003E', '>').replace('\\', '');
 }
 
-registerPlugin('render', EMBED_TWEET_PLUGIN, embeddedTweetPlugin);
+async function embedAdsense(html: string, route: HandledRoute): Promise<string> {
+  const pathVars = route.route.split('/');
+  const dontSkip =  pathVars.includes('posts') || pathVars.includes('blog');
+  
+  if (dontSkip) {
+    const adScript =  '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7493226566481389"crossorigin="anonymous"></script>';
+    const headSplitter = '</head>';
+    const [begin, end] = html.split(headSplitter);
+    html = begin.concat(adScript, headSplitter, end);
+    return Promise.resolve(html);
+  }
+  return Promise.resolve(html);
+}
 
-const postRenderers = [DisableAngular, EMBED_TWEET_PLUGIN];
+const validator = async () => [];
+
+registerPlugin('postProcessByHtml', EMBED_TWEET_PLUGIN, embeddedTweetPlugin, validator);
+registerPlugin('postProcessByHtml', EMBED_ADSENSE_PLUGIN, embedAdsense, validator);
+
+
+const postRenderers = [DisableAngular, EMBED_TWEET_PLUGIN, EMBED_ADSENSE_PLUGIN];
 setPluginConfig('md', { enableSyntaxHighlighting: true });
-setPluginConfig(DisableAngular, 'render', { removeState: true });
+setPluginConfig(DisableAngular, 'postProcessByHtml', { removeState: true });
 
 export const config: ScullyConfig = {
   projectName: 'soloCoding-blog',
