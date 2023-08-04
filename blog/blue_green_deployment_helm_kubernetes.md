@@ -7,7 +7,6 @@ author: Bassem
 slug: eng_blue_green_helm_kubernetes_ambassador
 photo: assets/stock/blue-green.webp
 imgCredit:
-tweetId: ''
 keywords:
   - devops
   - helm
