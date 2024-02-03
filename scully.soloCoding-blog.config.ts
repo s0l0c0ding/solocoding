@@ -57,7 +57,7 @@ registerPlugin('postProcessByHtml', EMBED_TWEET_PLUGIN, embeddedTweetPlugin, val
 registerPlugin('postProcessByHtml', EMBED_ADSENSE_PLUGIN, embedAdsense, validator);
 
 
-const postRenderers = [DisableAngular, EMBED_TWEET_PLUGIN, EMBED_ADSENSE_PLUGIN];
+const postRenderers = [DisableAngular, EMBED_TWEET_PLUGIN];
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(DisableAngular, 'postProcessByHtml', { removeState: true });
 
